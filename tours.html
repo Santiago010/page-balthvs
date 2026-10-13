@@ -1,0 +1,521 @@
+<!-- Cargar fuente TASA Orbiter -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=TASA+Orbiter:wght@400..800&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  :root {
+    --accent-red: #bc3a1e;
+    --paper: #ffffff;
+    --shell: min(1920px, max(1000px, 90vw));
+    --sec-y: clamp(56px, 6.4vw, 190px);
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* WordPress overrides */
+  .entry-content > *:not(.site-header),
+  .wp-block-group,
+  .wp-block-post-content,
+  .wp-site-blocks {
+    max-width: none !important;
+    margin-top: 0 !important;
+    margin-block-start: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .tour-block {
+    font-family: "TASA Orbiter", "Helvetica Neue", Arial, sans-serif;
+    background: var(--paper);
+    max-width: var(--shell);
+    width: 100%;
+    margin: 0 auto;
+    padding: var(--sec-y) clamp(16px, 2.2vw, 56px) calc(var(--sec-y) * 1.04);
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .tour-block .eyebrow {
+    margin-top: 2rem;
+    font-size: clamp(13px, 0.9vw, 17px);
+    letter-spacing: 3.5px;
+    font-weight: 600;
+  }
+
+  .tour-block .eyebrow.red {
+    color: var(--accent-red);
+  }
+
+  .tour-block .cell-title {
+    font-size: clamp(44px, 4.3vw, 92px);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    margin: 14px 0 18px;
+    color: #0e0c0a;
+    line-height: 1;
+  }
+
+  .tour-block .cell-sub {
+    font-size: clamp(18px, 1.2vw, 24px);
+    font-weight: 500;
+    color: #56524d;
+    margin: 0 0 34px;
+  }
+
+  .tour-block .bit-wrap {
+    text-align: left;
+  }
+
+  /* Bandsintown widget styles */
+  #tourWrap [class*="-details-inner-wrapper"] > a[class*="-details"] {
+    display: block;
+  }
+  #tourWrap [class*="-date-wrapper"] {
+    width: auto;
+  }
+  #tourWrap [class*="-location"] {
+    text-align: left;
+    padding-left: 0;
+  }
+  #tourWrap [class*="-event"] {
+    align-items: center;
+  }
+  #tourWrap [class*="-event-buttons"] {
+    margin-left: auto;
+  }
+
+  /* ESTILOS PARA bit-play-my-city-wrapper (movido) */
+  #tourWrap .bit-follow-section-wrapper {
+    color: #141210;
+    align-items: baseline;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 24px;
+    text-align: center;
+    font-family: "TASA Orbiter", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .bit-follow-section-wrapper .bit-follow-section-heading-text {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+  }
+
+  .bit-follow-section-wrapper .bit-follow-section-cta {
+    border: solid #141210 1px;
+    border-radius: 3px;
+    padding: 9px 20px;
+    line-height: 14px !important;
+    font-size: 14px;
+  }
+
+  .bit-follow-section-wrapper .bit-follow-section-cta {
+    margin: 20px 0px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bit-follow-section-wrapper a {
+    text-decoration: none;
+    color: inherit;
+    box-shadow: none;
+    color: #ffffff;
+    background: #141210;
+  }
+
+  @media only screen and (max-width: 916px) {
+    #tourWrap .bit-play-my-city-wrapper {
+      align-items: center !important;
+    }
+  }
+
+  @media (max-width: 941px) {
+    #tourWrap [class*="-event"] {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    #tourWrap [class*="-details-inner-wrapper"] {
+      width: 100%;
+      text-align: center;
+    }
+    #tourWrap [class*="-details-inner-wrapper"] [class*="-details"] {
+      display: block;
+      text-align: center;
+    }
+    #tourWrap [class*="-date-wrapper"] {
+      min-width: 0;
+      text-align: center;
+    }
+    #tourWrap [class*="-location"] {
+      padding-left: 0;
+      min-width: 0;
+      text-align: center;
+    }
+    #tourWrap [class*="-event-buttons"] {
+      margin: 0 auto;
+    }
+  }
+</style>
+
+<!-- ===== Embedded BALTHVS navigation header ===== -->
+<style>
+  /* WordPress host reset — remove the Twenty Twenty-Three gap above the header */
+  .wp-site-blocks {
+    padding-top: 0 !important;
+  }
+  main,
+  .entry-content {
+    margin-top: 0 !important;
+  }
+  .page {
+    margin-top: 0 !important;
+  }
+  .site-header {
+    margin-top: 0 !important;
+  }
+
+  .site-header {
+    box-sizing: border-box;
+    /* Full-bleed: break out of the WordPress constrained content column */
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 52px;
+    background: #0a0a0a;
+    position: sticky;
+    top: 0;
+    z-index: 60;
+  }
+  .site-header * {
+    box-sizing: border-box;
+  }
+  .site-logo {
+    height: 29px;
+    width: auto;
+    display: block;
+  }
+  .site-nav {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+  }
+  .site-nav a {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 12.5px;
+    letter-spacing: 1.8px;
+    white-space: nowrap;
+    transition:
+      color 0.2s ease,
+      border-color 0.2s ease;
+  }
+  .site-nav a:hover {
+    color: #e5dfdf;
+  }
+  .site-nav a.is-active {
+    color: #ffffff;
+    border-bottom: 2px solid #bc3a1e;
+    padding-bottom: 3px;
+  }
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    z-index: 70;
+  }
+  .nav-toggle span {
+    display: block;
+    height: 1.5px;
+    width: 24px;
+    background: #ffffff;
+    transition:
+      transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.2s ease;
+  }
+  .nav-open .nav-toggle span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+  .nav-open .nav-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-open .nav-toggle span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  @media (max-width: 768px) {
+    .site-header {
+      padding: 18px 22px;
+    }
+    .nav-toggle {
+      display: flex;
+    }
+    .site-nav {
+      box-sizing: border-box;
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: min(320px, 84vw);
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 26px;
+      padding: 40px 44px;
+      background: #0a0a0a;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: -24px 0 60px rgba(20, 12, 6, 0.16);
+      transform: translateX(100%);
+      transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+      z-index: 65;
+    }
+    .nav-open .site-nav {
+      transform: translateX(0);
+    }
+    .site-nav a {
+      font-size: 16px;
+      letter-spacing: 2.4px;
+    }
+    .nav-scrim {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 8, 6, 0.45);
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+      z-index: 55;
+    }
+    .nav-open .nav-scrim {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+</style>
+
+<header class="site-header">
+  <a href="https://balthvs.com/" aria-label="BALTHVS home">
+    <img
+      class="site-logo"
+      src="https://balthvs.com/wp-content/uploads/2026/06/BALTHVS_LOGO_WHITE.png"
+      alt="BALTHVS"
+    />
+  </a>
+
+  <button
+    class="nav-toggle"
+    id="navToggle"
+    type="button"
+    aria-label="Menu"
+    aria-expanded="false"
+    aria-controls="siteNav"
+  >
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="site-nav" id="siteNav" aria-label="Primary">
+    <a
+      href="https://balthvs.com/albums/"
+      target="_blank"
+      rel="noopener noreferrer"
+      >MUSIC</a
+    >
+    <a
+      class="is-active"
+      href="https://balthvs.com/tour/"
+      target="_blank"
+      rel="noopener noreferrer"
+      >TOUR</a
+    >
+    <a
+      href="https://www.youtube.com/@balthvs"
+      target="_blank"
+      rel="noopener noreferrer"
+      >VIDEOS</a
+    >
+    <a
+      href="https://paidtabs.com/BALTHVS"
+      target="_blank"
+      rel="noopener noreferrer"
+      >TABS</a
+    >
+    <a
+      href="https://laylo.com/balthvs"
+      target="_blank"
+      rel="noopener noreferrer"
+      >SUBSCRIBE</a
+    >
+    <a href="https://balthvs.com/about/">ABOUT</a>
+    <a href="https://balthvs.com/contact/">CONTACTS</a>
+  </nav>
+</header>
+<div class="nav-scrim" id="navScrim" aria-hidden="true"></div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var toggle = document.getElementById("navToggle");
+    var scrim = document.getElementById("navScrim");
+    var nav = document.getElementById("siteNav");
+    if (!toggle || !nav) return;
+    function closeNav() {
+      root.classList.remove("nav-open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+    function toggleNav() {
+      var open = root.classList.toggle("nav-open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+    toggle.addEventListener("click", toggleNav);
+    scrim.addEventListener("click", closeNav);
+    nav.addEventListener("click", function (e) {
+      if (e.target.tagName === "A") closeNav();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeNav();
+    });
+  })();
+</script>
+
+<div class="tour-block">
+  <div class="eyebrow red">MANIFEST TOUR '26</div>
+  <h2 class="cell-title">On Tour</h2>
+  <p class="cell-sub">Every upcoming show, live from Bandsintown.</p>
+
+  <div class="bit-wrap" id="tourWrap">
+    <a
+      class="bit-widget-initializer"
+      data-artist-name="id_15514057"
+      data-app-id="714a1220ae4ad9ac8cbf3e5b66a42da0"
+      data-language="en"
+      data-display-limit="all"
+      data-display-lineup="false"
+      data-display-start-time="false"
+      data-social-share-icon="true"
+      data-local-dates-position="tab"
+      data-auto-style="false"
+      data-font="TASA Orbiter"
+      data-background-color="#ffffff"
+      data-separator-color="#e7e7e7"
+      data-text-color="#141210"
+      data-header-capitalization="uppercase"
+      data-button-label-capitalization="uppercase"
+      data-location-capitalization="capitalize"
+      data-venue-capitalization="capitalize"
+      data-date-format="MMM D"
+      data-date-orientation="horizontal"
+      data-date-capitalization="capitalize"
+      data-date-border-color="#e7e7e7"
+      data-date-border-width="1px"
+      data-date-border-radius="3px"
+      data-event-ticket-text="TICKETS"
+      data-event-ticket-cta-size="medium"
+      data-event-ticket-icon="false"
+      data-event-ticket-cta-text-color="#ffffff"
+      data-event-ticket-cta-bg-color="#0a0a0a"
+      data-event-ticket-cta-border-color="#0a0a0a"
+      data-event-ticket-cta-border-width="0px"
+      data-event-ticket-cta-border-radius="3px"
+      data-sold-out-button-text-color="#6a6a6a"
+      data-sold-out-button-background-color="#f2f2f2"
+      data-sold-out-button-border-color="#e7e7e7"
+      data-sold-out-button-clickable="false"
+      data-event-rsvp-position="hidden"
+      data-follow-section-position="bottom"
+      data-follow-section-alignment="left"
+      data-follow-section-header-text="Get updates on new shows"
+      data-follow-section-cta-text="FOLLOW"
+      data-follow-section-cta-size="medium"
+      data-follow-section-cta-icon="true"
+      data-follow-section-cta-text-color="#141210"
+      data-follow-section-cta-bg-color="#ffffff"
+      data-follow-section-cta-border-color="#141210"
+      data-follow-section-cta-border-width="1px"
+      data-follow-section-cta-border-radius="3px"
+      data-play-my-city-position="bottom"
+      data-play-my-city-alignment="left"
+      data-play-my-city-header-text="Don't see a show near you?"
+      data-play-my-city-cta-text="REQUEST A SHOW"
+      data-play-my-city-cta-size="medium"
+      data-play-my-city-cta-icon="true"
+      data-play-my-city-cta-text-color="#141210"
+      data-play-my-city-cta-bg-color="#ffffff"
+      data-play-my-city-cta-border-color="#141210"
+      data-play-my-city-cta-border-width="1px"
+      data-play-my-city-cta-border-radius="3px"
+      data-bit-logo-position="bottomRight"
+      data-bit-logo-color="#a2a2a2"
+    ></a>
+  </div>
+</div>
+
+<!-- Script obligatorio de Bandsintown -->
+<script
+  charset="utf-8"
+  src="https://widgetv3.bandsintown.com/main.min.js"
+></script>
+
+<!-- Script que mueve el bit-play-my-city-wrapper debajo del texto "Every upcoming show..." -->
+<script>
+  (function () {
+    function movePlayMyCity() {
+      // Ya ejecutado
+      if (window.__bitPlayMyCityMoved) return true;
+
+      var playMyCity = document.querySelector(
+        "#tourWrap .bit-follow-section-wrapper",
+      );
+      if (!playMyCity) return false;
+
+      // El texto objetivo
+      var targetText = document.querySelector(".tour-block .cell-sub");
+      if (!targetText) return false;
+
+      // Insertar justo después del texto "Every upcoming show, live from Bandsintown."
+      targetText.insertAdjacentElement("afterend", playMyCity);
+
+      // Marcar como ejecutado para no duplicar
+      window.__bitPlayMyCityMoved = true;
+      return true;
+    }
+
+    // Intentar inmediatamente (por si el widget ya cargó)
+    if (movePlayMyCity()) return;
+
+    // Observer para esperar a que el widget termine de renderizar
+    var observer = new MutationObserver(function () {
+      if (movePlayMyCity()) observer.disconnect();
+    });
+    observer.observe(document.getElementById("tourWrap"), {
+      childList: true,
+      subtree: true,
+    });
+
+    // Timeout de seguridad
+    setTimeout(function () {
+      observer.disconnect();
+    }, 8000);
+  })();
+</script>

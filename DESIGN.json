@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-14T00:00:00Z",
+  "title": "Design System: BALTHVS",
+  "extensions": {
+    "colorMeta": {
+      "accent-rust": { "role": "primary", "displayName": "Burnt Rust", "canonical": "#bc3a1e", "tonalRamp": ["#2b0d06", "#4a170a", "#661d1d", "#8a2c15", "#bc3a1e", "#d4633f", "#e39a7f", "#f3d3c6"] },
+      "accent-indigo": { "role": "secondary", "displayName": "Electric Indigo", "canonical": "#3f33d6", "tonalRamp": ["#0f0b3a", "#1b1560", "#2a2091", "#3429b8", "#3f33d6", "#6a5fe4", "#9c94ef", "#d0cbf8"] },
+      "ink": { "role": "neutral", "displayName": "Ink (Warm Black)", "canonical": "#141210", "tonalRamp": ["#0a0806", "#0e0c0a", "#141210", "#221d18", "#3a322b", "#56524d", "#8a847c", "#e5dfdf"] },
+      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#ffffff", "tonalRamp": ["#e5dfdf", "#ececec", "#f2f2f2", "#f7f7f7", "#ffffff", "#ffffff", "#ffffff", "#ffffff"] },
+      "oxblood": { "role": "primary", "displayName": "Oxblood", "canonical": "#661d1d", "tonalRamp": ["#1f0808", "#330d0d", "#4a1414", "#661d1d", "#8a2c2c", "#b04a4a", "#d38585", "#f0cccc"] },
+      "text-strong": { "role": "neutral", "displayName": "Warm Black Text", "canonical": "#16110d", "tonalRamp": ["#0a0806", "#0e0c0a", "#16110d", "#2b2722", "#46403a", "#56524d", "#8a847c", "#e5dfdf"] },
+      "ash-cream": { "role": "neutral", "displayName": "Ash Cream", "canonical": "#e5dfdf", "tonalRamp": ["#56524d", "#6a6560", "#8a847c", "#a8a29a", "#c7c1b9", "#e5dfdf", "#f2eeec", "#ffffff"] },
+      "warm-stone": { "role": "neutral", "displayName": "Warm Stone", "canonical": "#56524d", "tonalRamp": ["#16110d", "#221d18", "#3a322b", "#56524d", "#7a746c", "#a8a29a", "#c7c1b9", "#e5dfdf"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display (Herqin)", "purpose": "Band and album names, hero/page titles. Ceremony type, the title card." },
+      "headline": { "displayName": "Headline (Herqin)", "purpose": "Section titles on interior and album pages." },
+      "title": { "displayName": "Title (TASA Orbiter)", "purpose": "Release lines and subheads." },
+      "body": { "displayName": "Body (TASA Orbiter)", "purpose": "Reading copy, capped near a 34em measure." },
+      "label": { "displayName": "Label (TASA Orbiter)", "purpose": "Uppercase nav, eyebrows, album-strip titles. Wide tracking is the ornament." }
+    },
+    "shadows": [
+      { "name": "cover-float", "value": "0 34px 90px rgba(20, 12, 6, 0.32)", "purpose": "The single lift in the system, under the hero album cover. Large, soft, warm." },
+      { "name": "nav-scrim", "value": "rgba(10, 8, 6, 0.45)", "purpose": "Warm overlay behind the mobile nav menu." },
+      { "name": "modal-scrim", "value": "rgba(0, 0, 0, 0.6)", "purpose": "Darkens the page behind the newsletter modal." }
+    ],
+    "motion": [
+      { "name": "ease-out-signature", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "House ease-out for transforms and reveals (~0.34s). No bounce." },
+      { "name": "state-fade", "value": "0.18s-0.2s ease", "purpose": "Color, background, and opacity state changes on links and buttons." },
+      { "name": "overlay-fade", "value": "opacity/visibility 120ms linear", "purpose": "Newsletter modal toggle. Never display:none, to keep reCAPTCHA mounted." }
+    ],
+    "effects": [
+      { "name": "hero-blur", "value": "blur(clamp(46px, 3.2vw, 80px)) scale(1.18)", "purpose": "Frosted album-art background behind the paper scrim." },
+      { "name": "chrome-blur", "value": "backdrop-filter: blur(14px)", "purpose": "Sticky/floating chrome over content. Atmosphere only." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "480px" },
+      { "name": "shell-cap", "value": "~1440px content column" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Rust action button, uppercase tracked label, sharp poster corners. Deepens to oxblood on hover, no lift.",
+      "html": "<button class=\"ds-btn-primary\">SUBSCRIBE</button>",
+      "css": ".ds-btn-primary { background: #bc3a1e; color: #fff; font-family: 'TASA Orbiter','Helvetica Neue',Arial,sans-serif; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.25em; padding: 15px 40px; border: none; border-radius: 3px; cursor: pointer; transition: background 0.18s ease; } .ds-btn-primary:hover { background: #661d1d; } .ds-btn-primary:focus-visible { outline: 2px solid #16110d; outline-offset: 2px; }"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Uppercase tracked text link. Warm-black at rest, fades toward rust on hover.",
+      "html": "<a class=\"ds-nav-link\" href=\"#\">ABOUT</a>",
+      "css": ".ds-nav-link { font-family: 'TASA Orbiter','Helvetica Neue',Arial,sans-serif; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.2em; color: #141210; text-decoration: none; padding: 8px 0; transition: color 0.2s ease; } .ds-nav-link:hover { color: #bc3a1e; }"
+    },
+    {
+      "name": "Email Input",
+      "kind": "input",
+      "refersTo": "input-email",
+      "description": "Newsletter field. Paper background, warm-black text, hairline stone border, rust focus. (Live site uses a generated Brevo embed; this is the on-brand target.)",
+      "html": "<input class=\"ds-input-email\" type=\"email\" placeholder=\"your@email.com\" />",
+      "css": ".ds-input-email { width: 100%; box-sizing: border-box; background: #fff; color: #16110d; font-family: 'TASA Orbiter','Helvetica Neue',Arial,sans-serif; font-size: 16px; padding: 14px 16px; border: 1px solid #56524d; border-radius: 3px; transition: border-color 0.18s ease; } .ds-input-email::placeholder { color: #8a847c; } .ds-input-email:focus { outline: none; border-color: #bc3a1e; }"
+    },
+    {
+      "name": "Frosted Album-Art Hero",
+      "kind": "custom",
+      "refersTo": "hero-cover",
+      "description": "Signature. Oversized, blurred release artwork behind a top-to-bottom paper scrim; Herqin title over it; album cover floats with the warm cover-float shadow.",
+      "html": "<section class=\"ds-hero\"><div class=\"ds-hero-bg\"></div><div class=\"ds-hero-scrim\"></div><div class=\"ds-hero-inner\"><img class=\"ds-hero-cover\" src=\"album.jpg\" alt=\"Album cover\" /><h1 class=\"ds-hero-title\">Transmutations</h1></div></section>",
+      "css": ".ds-hero { position: relative; overflow: hidden; background: #fff; } .ds-hero-bg { position: absolute; inset: 0; background: center/cover no-repeat url('album.jpg'); filter: blur(64px); transform: scale(1.18); } .ds-hero-scrim { position: absolute; inset: 0; background: linear-gradient(rgba(255,255,255,1) 0%, rgba(255,255,255,0.86) 46%, rgba(255,255,255,0.5) 72%, rgba(255,255,255,0.06) 100%); } .ds-hero-inner { position: relative; display: grid; gap: 24px; padding: 96px 6vw; } .ds-hero-cover { width: 100%; border-radius: 3px; box-shadow: 0 34px 90px rgba(20,12,6,0.32); } .ds-hero-title { font-family: 'Herqin','Cormorant Garamond',Georgia,serif; font-weight: 400; font-size: clamp(34px,4.4vw,96px); line-height: 1; letter-spacing: 0.5px; color: #16110d; margin: 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Lights-Down Alchemy",
+    "overview": "BALTHVS is a psychedelic trio, and every reflex says 'psychedelic' should mean neon on black. This system does the opposite on purpose. The base is warm paper light, the darks are warm near-black (never neutral), and the atmosphere comes from the band's own artwork, oversized and blurred to a frosted haze behind the type. It should feel like warm daylight through frosted glass at the top of the page, then the lights going down toward a live set as you go deeper into overlays and the newsletter modal. The type does the heavy lifting: a decorative display serif (Herqin) carries every name, band and album, while a clean grotesque (TASA Orbiter) carries the reading. Color is restrained to near-monochrome warmth with two rare sparks (rust and electric indigo) that behave like stage lights, never fields.",
+    "keyCharacteristics": [
+      "Paper-light primary surface with warm near-black darks (#141210), never neutral #000.",
+      "The background is always the release's own artwork, blurred and bled to paper.",
+      "Herqin display serif for names; TASA Orbiter grotesque for everything read.",
+      "Two spark accents (rust #bc3a1e, indigo #3f33d6) used as points, never planes.",
+      "Sharp 3px poster radius; one big warm shadow; wide-tracked uppercase labels."
+    ],
+    "rules": [
+      { "name": "The Frosted-Art Rule", "body": "The atmospheric background is always the current release's own artwork, scaled up (~1.18) and blurred, behind a paper gradient scrim. Never a flat color, stock gradient, or purchased texture. The art is the mood.", "section": "colors" },
+      { "name": "The Warm-Black Rule", "body": "Every dark tilts warm (#141210, #16110d, rgba(20,12,6,x) shadows, rgba(10,8,6,x) scrims). #000/#000000 and neutral-gray shadows are forbidden.", "section": "colors" },
+      { "name": "The Two-Spark Rule", "body": "Rust and indigo are sparks, not fields. Combined they cover a small fraction of any screen.", "section": "colors" },
+      { "name": "The Herqin-for-Names Rule", "body": "Herqin is reserved for names and titles. Never set body, labels, buttons, or UI in Herqin.", "section": "typography" },
+      { "name": "The Wide-Label Rule", "body": "Uppercase labels are tracked between 2px and 9px; tracking scales with prominence and is the decoration.", "section": "typography" },
+      { "name": "The One-Float Rule", "body": "Only the album cover floats. Cards, sections, and buttons stay flat on paper.", "section": "elevation" },
+      { "name": "The Warm-Shadow Rule", "body": "When a shadow exists, its color is rgba(20,12,6,x). Neutral or blue-gray shadows are forbidden.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use the release's own artwork, blurred and scrim-veiled, as the page background.",
+      "Do keep darks warm: #141210 and the rgba(20,12,6,x) / rgba(10,8,6,x) family.",
+      "Do reserve Herqin for names and titles; set everything read in TASA Orbiter.",
+      "Do track uppercase labels wide (2px-9px) and let that tracking be the ornament.",
+      "Do ease motion out with cubic-bezier(0.22, 1, 0.36, 1).",
+      "Do cap reading measure near 34em and the layout at the --shell column width.",
+      "Do let scale and the touring resume speak plainly; show the reach, do not boast it."
+    ],
+    "donts": [
+      "Don't reach for neon-on-black psychedelia (electric purple/cyan on pure black, laser gradients).",
+      "Don't signal 'Latin band' with palm-and-neon or tropical-postcard palettes.",
+      "Don't let it look like an interchangeable Spotify-for-Artists page or link-in-bio template.",
+      "Don't use gradient text (background-clip: text) or decorative glassmorphism cards.",
+      "Don't use #000/#000000 or neutral-gray shadows; warm-tint every dark.",
+      "Don't add a colored border-left/border-right stripe to cards, list items, or callouts.",
+      "Don't add per-card drop shadows to make things pop; only the album cover floats.",
+      "Don't set body copy, buttons, or labels in Herqin."
+    ]
+  }
+}

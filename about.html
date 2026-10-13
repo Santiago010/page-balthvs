@@ -1,0 +1,1408 @@
+<link
+  href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&amp;family=Nunito+Sans:ital,wght@1,400&amp;display=swap"
+  rel="stylesheet"
+/>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: "Nunito Sans", sans-serif;
+    background: #fff;
+    color: #000;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pantacle {
+    width: 96%;
+    max-width: 1600px;
+    height: 28vh;
+    background: url("https://balthvs.com/wp-content/uploads/2025/12/Pantacle-Clean-Black-scaled.png")
+      center/contain no-repeat;
+  }
+
+  .section-title {
+    margin: 4vh 0 2vh;
+    font-size: 36px;
+    letter-spacing: 0.25em;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .about-image {
+    width: 25vw;
+    max-width: 560px;
+    margin-bottom: 4vh;
+  }
+
+  .about-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .about-text,
+  .philosophy-text {
+    width: 50vw;
+    max-width: 1120px;
+    padding: 0 3vw;
+    text-align: center;
+    font-size: 20px;
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+    font-weight: 400;
+  }
+
+  .about-text p,
+  .philosophy-text p {
+    margin: 0 0 1.25em;
+  }
+
+  .subtitle {
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .band-lineup {
+    margin-top: 4vh;
+    font-size: 20px;
+    line-height: 1.8;
+    letter-spacing: 0.04em;
+    text-align: center;
+  }
+
+  .band-lineup .lineup-title {
+    font-weight: 600;
+  }
+
+  .festivals {
+    width: 50vw;
+    max-width: 1120px;
+    padding: 0 3vw;
+    margin-top: 2vh;
+  }
+
+  .festivals .fest-year {
+    margin: 3vh 0 1vh;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    padding-bottom: 0.5em;
+  }
+
+  .festivals .fest-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1em;
+    align-items: baseline;
+    padding: 0.55em 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    font-size: 17px;
+    line-height: 1.4;
+  }
+
+  .festivals .fest-name {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .festivals .fest-place {
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .festivals .fest-date {
+    font-size: 15px;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+
+  .festivals a.int-row {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+    padding: 0.7em 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    font-size: 16px;
+    line-height: 1.45;
+    transition: color 0.2s ease;
+  }
+
+  .festivals a.int-row:hover {
+    color: #555;
+  }
+
+  .int-name {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .int-source {
+    font-style: italic;
+  }
+
+  .int-date {
+    font-size: 15px;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+
+  /* Sync / placements: stronger link affordance than the interviews list —
+     the name reads as clickable at rest (underline),
+     not only on hover. Hover matches the interviews list (#555). */
+  .festivals.sync .int-name {
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+
+  .footer-divider {
+    width: 40.8%;
+    height: 8vh;
+    margin-top: 2vh;
+    background: url("https://balthvs.com/wp-content/uploads/2025/12/HEADERSArtboard-1-scaled.png")
+      center/contain no-repeat;
+    transform: rotate(180deg);
+  }
+
+  .copyright {
+    margin-top: 3vh;
+    font-style: italic;
+    font-size: 16px;
+    letter-spacing: 0.06em;
+    text-align: center;
+  }
+
+  .social-row {
+    display: flex;
+    gap: 36px;
+    margin-top: 2vh;
+    justify-content: center;
+  }
+
+  .social-row img {
+    height: 44px;
+    display: block;
+  }
+
+  @media (max-width: 480px) {
+    .pantacle {
+      width: 80%;
+      height: 18vh;
+    }
+
+    .section-title {
+      font-size: 28px;
+      margin: 3vh 0 2vh;
+    }
+
+    .about-image {
+      width: 50vw;
+      margin-bottom: 3vh;
+    }
+
+    .about-text,
+    .philosophy-text {
+      width: 80vw;
+      padding: 0 6vw;
+      font-size: 15.3px;
+      line-height: 1.65;
+    }
+
+    .band-lineup {
+      font-size: 17px;
+      margin-top: 3vh;
+    }
+
+    .festivals {
+      width: 80vw;
+      padding: 0 6vw;
+    }
+
+    .festivals .fest-year {
+      font-size: 15px;
+    }
+
+    .festivals .fest-row {
+      grid-template-columns: 1fr;
+      gap: 0.15em;
+      font-size: 14.5px;
+    }
+
+    .festivals .fest-date {
+      font-size: 13px;
+    }
+
+    .festivals a.int-row {
+      font-size: 14.5px;
+    }
+
+    .int-date {
+      font-size: 13px;
+    }
+
+    .copyright {
+      font-size: 11.2px;
+    }
+
+    .social-row img {
+      height: 22px;
+    }
+  }
+</style>
+
+<!-- ===== Embedded BALTHVS navigation header ===== -->
+<style>
+  /* WordPress host reset — remove the Twenty Twenty-Three gap above the header */
+  .wp-site-blocks {
+    padding-top: 0 !important;
+  }
+  main,
+  .entry-content {
+    margin-top: 0 !important;
+  }
+  .page {
+    margin-top: 0 !important;
+  }
+  .site-header {
+    margin-top: 0 !important;
+  }
+
+  .site-header {
+    box-sizing: border-box;
+    /* Full-bleed: break out of the WordPress constrained content column */
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 52px;
+    background: #0a0a0a;
+    position: sticky;
+    top: 0;
+    z-index: 60;
+  }
+  .site-header * {
+    box-sizing: border-box;
+  }
+  .site-logo {
+    height: 29px;
+    width: auto;
+    display: block;
+  }
+  .site-nav {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+  }
+  .site-nav a {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 12.5px;
+    letter-spacing: 1.8px;
+    white-space: nowrap;
+    transition:
+      color 0.2s ease,
+      border-color 0.2s ease;
+  }
+  .site-nav a:hover {
+    color: #e5dfdf;
+  }
+  .site-nav a.is-active {
+    color: #ffffff;
+    border-bottom: 2px solid #bc3a1e;
+    padding-bottom: 3px;
+  }
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    z-index: 70;
+  }
+  .nav-toggle span {
+    display: block;
+    height: 1.5px;
+    width: 24px;
+    background: #ffffff;
+    transition:
+      transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.2s ease;
+  }
+  .nav-open .nav-toggle span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+  .nav-open .nav-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-open .nav-toggle span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  @media (max-width: 768px) {
+    .site-header {
+      padding: 18px 22px;
+    }
+    .nav-toggle {
+      display: flex;
+    }
+    .site-nav {
+      box-sizing: border-box;
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: min(320px, 84vw);
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 26px;
+      padding: 40px 44px;
+      background: #0a0a0a;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: -24px 0 60px rgba(20, 12, 6, 0.16);
+      transform: translateX(100%);
+      transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+      z-index: 65;
+    }
+    .nav-open .site-nav {
+      transform: translateX(0);
+    }
+    .site-nav a {
+      font-size: 16px;
+      letter-spacing: 2.4px;
+    }
+    .nav-scrim {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 8, 6, 0.45);
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+      z-index: 55;
+    }
+    .nav-open .nav-scrim {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+</style>
+
+<header class="site-header">
+  <a href="https://balthvs.com/" aria-label="BALTHVS home">
+    <img
+      class="site-logo"
+      src="https://balthvs.com/wp-content/uploads/2026/06/BALTHVS_LOGO_WHITE.png"
+      alt="BALTHVS"
+    />
+  </a>
+
+  <button
+    class="nav-toggle"
+    id="navToggle"
+    type="button"
+    aria-label="Menu"
+    aria-expanded="false"
+    aria-controls="siteNav"
+  >
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="site-nav" id="siteNav" aria-label="Primary">
+    <a
+      rel="noopener noreferrer"
+      target="_blank"
+      href="https://balthvs.com/albums/"
+      >MUSIC</a
+    >
+    <a
+      href="https://balthvs.com/tour/"
+      target="_blank"
+      rel="noopener noreferrer"
+      >TOUR</a
+    >
+    <a
+      href="https://www.youtube.com/@balthvs"
+      target="_blank"
+      rel="noopener noreferrer"
+      >VIDEOS</a
+    >
+    <a
+      href="https://paidtabs.com/BALTHVS"
+      target="_blank"
+      rel="noopener noreferrer"
+      >TABS</a
+    >
+    <a
+      href="https://laylo.com/balthvs"
+      target="_blank"
+      rel="noopener noreferrer"
+      >SUBSCRIBE</a
+    >
+    <a class="is-active" href="https://balthvs.com/about/">ABOUT</a>
+    <a href="https://balthvs.com/contact/">CONTACTS</a>
+  </nav>
+</header>
+<div class="nav-scrim" id="navScrim" aria-hidden="true"></div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var toggle = document.getElementById("navToggle");
+    var scrim = document.getElementById("navScrim");
+    var nav = document.getElementById("siteNav");
+    if (!toggle || !nav) return;
+    function closeNav() {
+      root.classList.remove("nav-open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+    function toggleNav() {
+      var open = root.classList.toggle("nav-open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+    toggle.addEventListener("click", toggleNav);
+    scrim.addEventListener("click", closeNav);
+    nav.addEventListener("click", function (e) {
+      if (e.target.tagName === "A") closeNav();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeNav();
+    });
+  })();
+</script>
+
+<div class="page">
+  <div class="pantacle" aria-hidden="true"></div>
+
+  <div class="section-title">• ABOUT •</div>
+
+  <div class="about-image">
+    <img
+      src="https://balthvs.com/wp-content/uploads/2026/01/gradient-experiment-small-6.jpg"
+      alt="BALTHVS visual"
+    />
+  </div>
+
+  <div class="about-text">
+    <p>
+      It's not far fetched to consider BALTHVS as the biggest psychedelic band
+      Colombia has ever produced. Formed in late 2019, with over 140 million
+      streams, five studio albums, 1 live album and twelve EPs, the band has
+      established itself in the global touring circuit, performing across the
+      Americas, Europe, Asia, and Oceania.
+    </p>
+
+    <p>
+      They have played more than 26 countries and 98 cities worldwide, appearing
+      at major events including SXSW, Lollapalooza, Austin City Limits, Outside
+      Lands, Electric Forest, Lightning in a Bottle, Montreal Jazz Festival,
+      SXSW Sydney, and Jazz Cafe Festival. The band has also made notable
+      appearances on KEXP, Gilles Peterson’s Worldwide Cafe, and the BBC.
+    </p>
+
+    <p>
+      BALTHVS continues to push forward with a distinctive blend of psychedelic
+      funk, global grooves, Middle Eastern melodies, spiritual jazz
+      improvisations, and Latin-tinged rhythms
+    </p>
+  </div>
+
+  <div class="band-lineup">
+    <p class="lineup-title">BALTHVS is:</p>
+    <p>Balthazar Aguirre (Guitar, Vocals)</p>
+    <p>Johanna Mercuriana (Bass, Vocals)</p>
+    <p>Santiago Lizcano (Drums, Vocals)</p>
+  </div>
+
+  <!-- ===== Embed List Festivals ===== -->
+  <div class="section-title">• FESTIVALS •</div>
+
+  <div class="festivals">
+    <div class="fest-year">2026</div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Electric Honey</span><br />
+        <span class="fest-place">Moab, UT</span>
+      </div>
+      <div class="fest-date">26 Sep 2026</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">MODE Festival</span><br />
+        <span class="fest-place">Minneapolis, Minnesota</span>
+      </div>
+      <div class="fest-date">20 Sep 2026</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Adirondack Independence Music Festival</span
+        ><br />
+        <span class="fest-place">Lake George, New York — USA</span>
+      </div>
+      <div class="fest-date">6 Sep 2026</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Burning Man (Main Stage,Camp Reverbia)</span
+        ><br />
+        <span class="fest-place">Black Rock City, Nevada — USA</span>
+      </div>
+      <div class="fest-date">2 Sep 2026 - 4 Sep 2026</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Festival d'Été de Québec</span><br />
+        <span class="fest-place">Québec City, QC — Canada</span>
+      </div>
+      <div class="fest-date">17 Jul 2026</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Release Athens Festival</span><br />
+        <span class="fest-place">Kallithea, Greece</span>
+      </div>
+      <div class="fest-date">11 Jul 2026</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Kulturfestival</span><br />
+        <span class="fest-place">St. Gallen, Switzerland</span>
+      </div>
+      <div class="fest-date">10 Jul 2026</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">High Sierra Festival</span><br />
+        <span class="fest-place">Grass Valley, CA — USA</span>
+      </div>
+      <div class="fest-date">03 Jul 2026</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Zootown Festival</span><br />
+        <span class="fest-place">Missoula, MT — USA</span>
+      </div>
+      <div class="fest-date">20 Jun 2026</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Sawtooth Valley Gathering Festival</span><br />
+        <span class="fest-place">Stanley, ID — USA</span>
+      </div>
+      <div class="fest-date">19 Jun 2026</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">All Good Now Festival</span><br />
+        <span class="fest-place">Columbia, MD — USA</span>
+      </div>
+      <div class="fest-date">13 Jun 2026</div>
+    </div>
+
+    <div class="fest-year">2025</div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Iceland Airwaves Festival</span><br />
+        <span class="fest-place">Reykjavík, Iceland</span>
+      </div>
+      <div class="fest-date">06 Nov 2025</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Cascade Equinox Festival</span><br />
+        <span class="fest-place">Redmond, OR — USA</span>
+      </div>
+      <div class="fest-date">19 Sep 2025</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Edmonton Jazz Festival</span><br />
+        <span class="fest-place">Edmonton, Canada</span>
+      </div>
+      <div class="fest-date">10 Aug 2025</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Telluride Jazz Festival</span><br />
+        <span class="fest-place">Telluride, CO — USA</span>
+      </div>
+      <div class="fest-date">08 Aug 2025</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Jazz Cafe Festival</span><br />
+        <span class="fest-place">London, United Kingdom</span>
+      </div>
+      <div class="fest-date">04 Aug 2025</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Sonny Hall (Blue Note Jazz Festival)</span
+        ><br />
+        <span class="fest-place">Toronto, ON — Canada</span>
+      </div>
+      <div class="fest-date">28 Jun 2025</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Festival International de Jazz de Montréal</span
+        ><br />
+        <span class="fest-place">Montreal, QC — Canada</span>
+      </div>
+      <div class="fest-date">26 Jun 2025</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Green River Festival</span><br />
+        <span class="fest-place">Greenfield, MA — USA</span>
+      </div>
+      <div class="fest-date">22 Jun 2025</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Nelsonville Music Festival</span><br />
+        <span class="fest-place">Nelsonville, OH — USA</span>
+      </div>
+      <div class="fest-date">20 Jun 2025</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Electric Forest Festival</span><br />
+        <span class="fest-place">Rothbury, MI — USA</span>
+      </div>
+      <div class="fest-date">19 Jun 2025</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Estéreo Picnic</span><br />
+        <span class="fest-place">Bogotá, Colombia</span>
+      </div>
+      <div class="fest-date">27 Mar 2025</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Lollapalooza Argentina</span><br />
+        <span class="fest-place">Buenos Aires, Argentina</span>
+      </div>
+      <div class="fest-date">22 Mar 2025</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Lollapalooza Chile</span><br />
+        <span class="fest-place">Santiago de Chile, Chile</span>
+      </div>
+      <div class="fest-date">21 Mar 2025</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Palm Tree Music Festival</span><br />
+        <span class="fest-place">Aspen, CO — USA</span>
+      </div>
+      <div class="fest-date">22 Feb 2025</div>
+    </div>
+
+    <div class="fest-year">2024</div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Sonic City Festival</span><br />
+        <span class="fest-place">Kortrijk, Belgium</span>
+      </div>
+      <div class="fest-date">09 Nov 2024</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">MIX Festival</span><br />
+        <span class="fest-place">Istanbul, Turkey</span>
+      </div>
+      <div class="fest-date">03 Nov 2024</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">London Calling Festival</span><br />
+        <span class="fest-place">Amsterdam, Netherlands</span>
+      </div>
+      <div class="fest-date">26 Oct 2024</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Palm Tree Music Festival</span><br />
+        <span class="fest-place">Dana Point, CA — USA</span>
+      </div>
+      <div class="fest-date">06 Oct 2024</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Bumbershoot Festival</span><br />
+        <span class="fest-place">Seattle, WA — USA</span>
+      </div>
+      <div class="fest-date">01 Sep 2024</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Orton Park Festival</span><br />
+        <span class="fest-place">Madison, WI — USA</span>
+      </div>
+      <div class="fest-date">24 Aug 2024</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Outside Lands Festival</span><br />
+        <span class="fest-place">San Francisco, CA — USA</span>
+      </div>
+      <div class="fest-date">10 Aug 2024</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">X2 Festivalen</span><br />
+        <span class="fest-place">Volda, Norway</span>
+      </div>
+      <div class="fest-date">13 Apr 2024</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Sound Wine Festival (The Far Out Lounge)</span
+        ><br />
+        <span class="fest-place">SXSW Austin, TX — USA</span>
+      </div>
+      <div class="fest-date">10 Mar 2024</div>
+    </div>
+
+    <div class="fest-year">2023</div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">ACIDFEST W (The Far Out Lounge & Stage)</span
+        ><br />
+        <span class="fest-place">SXSW Austin, TX — USA</span>
+      </div>
+      <div class="fest-date">17 Mar 2023</div>
+    </div>
+
+    <div class="fest-year">2022</div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Rock al Parque</span><br />
+        <span class="fest-place">Bogotá, Colombia</span>
+      </div>
+      <div class="fest-date">27 Nov 2022</div>
+    </div>
+    <div class="fest-row">
+      <div>
+        <span class="fest-name">Festival Centro XIII</span><br />
+        <span class="fest-place">Bogotá, Colombia</span>
+      </div>
+      <div class="fest-date">22 Jan 2022</div>
+    </div>
+  </div>
+
+  <!-- ===== Embed List Sync / Placements ===== -->
+  <div class="section-title">• MOVIES, TV & BRANDING •</div>
+
+  <div class="festivals sync">
+    <div class="fest-year">MOVIES</div>
+    <a
+      class="int-row"
+      href="https://www.imdb.com/title/tt33100314/soundtrack/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name">Remarkably Bright Creatures (Netflix)</span><br />
+      <span class="int-source">Featured track: Mango Season</span>
+    </a>
+
+    <div class="fest-year">TV & SERIES</div>
+    <a
+      class="int-row"
+      href="https://www.netflix.com/tudum/articles/outer-banks-soundtrack"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name">Outer Banks (Netflix)</span><br />
+      <span class="int-source">Featured track: Turkish Coffee</span>
+    </a>
+
+    <div class="fest-year">BRANDING</div>
+    <a
+      class="int-row"
+      href="https://squiersllc.com/sun-cruiser"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name">Sun Cruiser — National Brand Campaign</span><br />
+      <span class="int-source">Featured track: Like Coconut Water</span>
+    </a>
+  </div>
+
+  <!-- ===== Embed List Interviews ===== -->
+  <div class="section-title">• INTERVIEWS •</div>
+
+  <div class="festivals">
+    <div class="fest-year">2026</div>
+    <a
+      class="int-row"
+      href="https://www.youtube.com/watch?v=9BTuVzCTskU"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name"
+        >Catching Up With Balthazar Aguirre from BALTHVS | What's New, What's
+        Coming and All The Latest</span
+      ><br />
+      <span class="int-source">wook plus</span><br />
+      <span class="int-date">30 Jun 2026</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://youtu.be/vw6ZSS4xOBs"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name"
+        >BALTHVS exclusive interview with Diffuser and Influencer Megan
+        Glionna</span
+      ><br />
+      <span class="int-source">Diffuser</span><br />
+      <span class="int-date">15 Mar 2026</span>
+    </a>
+
+    <div class="fest-year">2025</div>
+    <a
+      class="int-row"
+      href="https://open.spotify.com/episode/3NsN1YbrJF5NqgLEF9JeF9"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name"
+        >On The Guitar With Balthazar Aguirre (BALTHVS)</span
+      ><br />
+      <span class="int-source">On The Piano With Paul Edward</span><br />
+      <span class="int-date">09 Dec 2025</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://youtu.be/E44H6lY35Vc?t=1682"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name">Set 2: Episode 3 - Balthazar (BALTHVS)</span><br />
+      <span class="int-source">All Jammed Up</span><br />
+      <span class="int-date">13 Nov 2025</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://www.youtube.com/watch?v=bMA-lxas83M"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name"
+        >BALTHVS Interview and Performance On The PACT Stage @ The Chambers
+        Project</span
+      ><br />
+      <span class="int-source">The Chambers Project / PACT</span><br />
+      <span class="int-date">06 Aug 2025</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://wrrv.com/balthvs-music-hudson-valley/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name"
+        >Exclusive WRRV Interview Featuring BALTHVS: Tour, Hudson Valley &amp;
+        More</span
+      ><br />
+      <span class="int-source">WRRV</span><br />
+      <span class="int-date">20 Jul 2025</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://www.letsmixtape.com/balthazar-aguirre/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name">Balthazar Aguirre (BALTHVS) Interview</span><br />
+      <span class="int-source">Let's Make A Mixtape</span><br />
+      <span class="int-date">15 Jul 2025</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://www.astralmagazine.com/post/an-interview-with-balthvs"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name">An interview with: BALTHVS</span><br />
+      <span class="int-source">ASTRAL Magazine</span><br />
+      <span class="int-date">01 Jul 2025</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://www.youtube.com/watch?v=XZsU877LanM"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name">Balthvs en la transmisión oficial de FEP 2025</span
+      ><br />
+      <span class="int-source">Canal Capital</span><br />
+      <span class="int-date">28 Mar 2025</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://www.goodcallmusic.com/interview/on-the-line-w-balthvs"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name"
+        >On The Line w/ BALTHVS – Bogotá's Evolving Concept</span
+      ><br />
+      <span class="int-source">Good Call Music</span><br />
+      <span class="int-date">21 Feb 2025</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://www.youtube.com/watch?v=TlTl8dIpkr0"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name"
+        >From Colombia to the World: BALTHVS on Innovation Through Sound</span
+      ><br />
+      <span class="int-source">All That Jam</span><br />
+      <span class="int-date">23 Jan 2025</span>
+    </a>
+
+    <div class="fest-year">2024</div>
+    <a
+      class="int-row"
+      href="https://kgnu.org/music-posts/interview-balthvs/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name">"Hattın ucunda: BALTHVS"</span><br />
+      <span class="int-source">Time Out Istanbul</span><br />
+      <span class="int-date">06 Nov 2024</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://www.zorlupsm.com/kolombiya-daglarindan-turkiyeye-bir-ask-hikayesi-balthvs-ile-buyuleyici-bir-roportaj"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name"
+        >Kolombiya dağlarından Türkiye'ye bir aşk hikayesi: BALTHVS ile
+        büyüleyici bir röportaj</span
+      ><br />
+      <span class="int-source">Zorlu PSM</span><br />
+      <span class="int-date">03 Nov 2024</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://idioteq.com/beyond-boundaries-exploring-the-intimate-sonic-universe-of-balthvs/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name"
+        >Beyond boundaries: exploring the intimate sonic universe of
+        BALTHVS</span
+      ><br />
+      <span class="int-source">IDIOTEQ.com</span><br />
+      <span class="int-date">26 Sep 2024</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://www.youtube.com/watch?v=zWnu_TU6db0"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name"
+        >BALTHVS @OutsideLands An Interview with MARS.TV</span
+      ><br />
+      <span class="int-source">MARS TV</span><br />
+      <span class="int-date">05 Sep 2024</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://www.gratefulweb.com/articles/grateful-web-interview-with-balthvs/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name">Grateful Web Interview with BALTHVS</span><br />
+      <span class="int-source">Grateful Web</span><br />
+      <span class="int-date">21 Aug 2024</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://www.thepitchkc.com/colombias-balthvs-bring-their-psychedelic-cumbia-to-recordbar-this-sunday/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name"
+        >Colombia's BALTHVS bring their psychedelic cumbia to recordBar this
+        Sunday</span
+      ><br />
+      <span class="int-source">The Pitch</span><br />
+      <span class="int-date">15 Aug 2024</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://sabanasounds.com/2024/08/09/moving-beyond-latin-stereotypes-an-interview-with-balthvs-balthazar-aguirre/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name"
+        >It's defying Latin stereotypes': An Interview With BALTHVS' Balthazar
+        Aguirre</span
+      ><br />
+      <span class="int-source">Sabana Sounds</span><br />
+      <span class="int-date">09 Aug 2024</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://riffmagazine.com/features/balthvs-mystical-journey/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name"
+        >INTERVIEW: Colombian trio BALTHVS goes on a mystical journey</span
+      ><br />
+      <span class="int-source">RIFF Magazine</span><br />
+      <span class="int-date">04 Aug 2024</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://open.spotify.com/episode/4ZdVQ0LMIiW6wpFEK0TtsC"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name">BALTHVS</span><br />
+      <span class="int-source">EFFECTS PEDAL FAN CLUB</span><br />
+      <span class="int-date">15 Jun 2024</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://kupsfm.com/2024/04/22/balthvs-debut-in-seattle-3-31/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name">"BALTHVS' debut in Seattle (3/31)"</span><br />
+      <span class="int-source">KUPS FM "The Sound"</span><br />
+      <span class="int-date">22 Apr 2024</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://www.youtube.com/watch?v=VGXfaXunG00&amp;t=123s"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name"
+        >SXSW 2024 Entrevista com a banda colombiana BALTHVS</span
+      ><br />
+      <span class="int-source">Zonacurva</span><br />
+      <span class="int-date">04 Apr 2024</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://www.youtube.com/watch?v=0BnVmznaNC4"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name">BALTHVS SXSW Interview 2024</span><br />
+      <span class="int-source">RadioK770</span><br />
+      <span class="int-date">27 Mar 2024</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://starrymag.com/balthvs-like-coconut-water/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name">"BALTHVS – Like Coconut Water"</span><br />
+      <span class="int-source">Starry Mag</span><br />
+      <span class="int-date">06 Feb 2024</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://open.spotify.com/episode/44fhkmGZwX4SPS8myOxwba"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name">Episode 174 Santiago Lizcano (BALTHVS)</span><br />
+      <span class="int-source">The Vineyard Podcast</span><br />
+      <span class="int-date">19 Jan 2024</span>
+    </a>
+
+    <div class="fest-year">2023</div>
+    <a
+      class="int-row"
+      href="https://www.youtube.com/watch?v=yEzYDmZl_48"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name"
+        >Balthazar Aguirre on BALTHVS Origin and Touring America</span
+      ><br />
+      <span class="int-source">All That Jam</span><br />
+      <span class="int-date">01 Dec 2023</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://www.youtube.com/watch?v=UacSrBAj8Z4"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name">Interview BALTHVS</span><br />
+      <span class="int-source">Lo Intelectual de la Música</span><br />
+      <span class="int-date">20 Jun 2023</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://open.spotify.com/episode/0ps8bd2fqUm6w2uR4fiKZb"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name">BALTHVS en Distrito Cultural</span><br />
+      <span class="int-source">Distrito cultural - Areandina Radio</span><br />
+      <span class="int-date">07 Jun 2023</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://www.youtube.com/watch?v=qSMTJ8PU4LA"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name">BALTHVS - Noisesion (Interview)</span><br />
+      <span class="int-source">NOISESION</span><br />
+      <span class="int-date">10 May 2023</span>
+    </a>
+
+    <div class="fest-year">2022</div>
+    <a
+      class="int-row"
+      href="https://www.youtube.com/watch?v=hgBb-jWf_rQ&amp;t=399s"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name"
+        >BALTHVS nos habla de su experiencia tocando en Rock al Parque</span
+      ><br />
+      <span class="int-source">LAUD 90.4 FM ESTÉREO</span><br />
+      <span class="int-date">05 Dec 2022</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://www.youtube.com/watch?v=uKmSLRObSSI"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name">EL DESCONECTE BALTHVS</span><br />
+      <span class="int-source">RUIDO De FONDO Yissus Cadáver</span><br />
+      <span class="int-date">25 Mar 2022</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://www.zonagirante.com/en/rayos/artistas/balthvs-psicodelicos-bichos-raros-bogotanos/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name"
+        >"BALTHVS: Psicodélicos bichos raros bogotanos"</span
+      ><br />
+      <span class="int-source">Zonagirante</span><br />
+      <span class="int-date">10 Mar 2022</span>
+    </a>
+
+    <div class="fest-year">2021</div>
+    <a
+      class="int-row"
+      href="https://www.youtube.com/watch?v=J6weMOxldgY"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name">Interview BALTHVS</span><br />
+      <span class="int-source">Lo Intelectual de la Música</span><br />
+      <span class="int-date">29 Oct 2021</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://open.spotify.com/episode/538hP0YLZHAHAIsUsXIaUL"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name"
+        >Personas no gratas 1087 Entrevista BALTHVS (Colombia)</span
+      ><br />
+      <span class="int-source">PERSONAS NO GRATAS</span><br />
+      <span class="int-date">26 Jul 2021</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://www.youtube.com/watch?v=7t-UheVZsQ4"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name">Entrevista y presentación del álbum MACROCOSM</span
+      ><br />
+      <span class="int-source">Payta RadioUnion</span><br />
+      <span class="int-date">21 Apr 2021</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://www.youtube.com/watch?v=xLsJx8hvV7o"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name">Charlas Melomanas con BALTHVS</span><br />
+      <span class="int-source">Organic Plug</span><br />
+      <span class="int-date">13 Apr 2021</span>
+    </a>
+    <a
+      class="int-row"
+      href="https://open.spotify.com/episode/2srYqX3U05tXv9LT7CUliA"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name">Interview with BALTHVS</span><br />
+      <span class="int-source">TRION Zenit con Luis Oleg</span><br />
+      <span class="int-date">31 Mar 2021</span>
+    </a>
+
+    <div class="fest-year">2020</div>
+    <a
+      class="int-row"
+      href="https://www.youtube.com/watch?v=xEYXRFKtMVY"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="int-name">Interview BALTHVS VaporWaves</span><br />
+      <span class="int-source">La Selva Selva</span><br />
+      <span class="int-date">09 Dec 2020</span>
+    </a>
+  </div>
+
+  <div class="footer-divider" aria-hidden="true"></div>
+
+  <div class="philosophy-text">
+    <p><span class="subtitle">Psychedelic, Adj:</span></p>
+
+    <p>
+      From Ancient Greek ψυχή (psukhḗ, “mind, soul”) + δῆλος (dêlos, “manifest,
+      visible”) + -ic.
+    </p>
+
+    <p>
+      Coined by English psychiatrist Humphry Osmond in 1956 in a letter to
+      Aldous Huxley.
+    </p>
+
+    <p><span class="subtitle">"BALTHVS: An Evolving Concept"</span></p>
+
+    <p>
+      The Psychedelic Experience is clearly present but it has mutated into
+      another form: Psychedelic is external, it doesn't come from within,
+      watching a kaleidoscopic 4d film inside your mind, such experiences leave
+      lessons and temporary states of transcendence. Far too many don't go
+      beyond this temporary chemical high, some become forever lost in the trip.
+    </p>
+
+    <p><span class="subtitle">"All Music is Psychedelic"</span></p>
+
+    <p>
+      It generates trance and guides emotions: Harmony, Melody and Rhythm create
+      mood, they change vibration. Rarely does it divide men from one another,
+      more than anything it unites.
+    </p>
+
+    <p><span class="subtitle">"Imagination Realizes What it Invents"</span></p>
+
+    <p>
+      We are only left with the power of imagination and will to transmute that
+      which lies inside, burdensome thoughts, into alchemical reality. To
+      transmute the psychedelic experience into the Cosmic, in the realm of the
+      Manifest. Our pretensions are only to alleviate the daily toll the mind,
+      the body and spirit take amidst our modern, uncertain world, if only a
+      little bit. Music is medicine. Music is an Escape.
+    </p>
+
+    <p>
+      If there's just a tiny less bit of anger or anxiety because of this work,
+      the task is done, the purpose is fullfilled, there is no other intention
+      beyond this, it is a means to an end.
+    </p>
+
+    <p>
+      If I meditate my family meditates<br />
+      If I meditate my village meditates<br />
+      If I meditate the world meditates<br />
+      If I meditate God meditates
+    </p>
+  </div>
+
+  <div class="footer-divider" aria-hidden="true"></div>
+
+  <div class="copyright">© 2026 BALTHVS. All rights reserved.</div>
+
+  <div class="social-row">
+    <a
+      href="https://open.spotify.com/artist/2CtiNJi0zB35RHYXViVjKG"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img
+        src="https://balthvs.com/wp-content/uploads/2025/12/Spotify-Icon-Black-Logo.wine_.png"
+        alt="Spotify"
+      />
+    </a>
+    <a
+      href="https://music.apple.com/us/artist/balthvs/1502104696"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img
+        src="https://balthvs.com/wp-content/uploads/2025/12/Apple-Music.png"
+        alt="Apple Music"
+      />
+    </a>
+    <a
+      href="https://www.instagram.com/balthvsmusic"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img
+        src="https://balthvs.com/wp-content/uploads/2025/12/Instagram.png"
+        alt="Instagram"
+      />
+    </a>
+    <a
+      href="https://balthvsmusic.bandcamp.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img
+        src="https://balthvs.com/wp-content/uploads/2025/12/Bandcamp.png"
+        alt="Bandcamp"
+      />
+    </a>
+  </div>
+</div>

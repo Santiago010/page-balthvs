@@ -1,0 +1,336 @@
+<meta charset="UTF-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&amp;display=swap"
+  rel="stylesheet"
+/>
+
+<style>
+  /* //TODO:importart — WORDPRESS HOST OVERRIDES (borrar todo este bloque)
+     ------------------------------------------------------------------
+     Mismo bloque que main.html. Necesarios SOLO mientras este fragmento viva
+     dentro de un bloque custom-HTML del tema Twenty Twenty-Three:
+
+     1. theme.json define --wp--style--global--content-size: 650px y la regla
+        .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull))
+        se lo aplica como max-width + margin auto a cada hijo directo de
+        .entry-content, dejando el contenido encajonado y centrado.
+     2. .entry-content.has-global-padding mete 32px de padding lateral.
+     3. <main> arrastra margin-top: 72px y .entry-content otros 24px
+        (--wp--style--block-gap: 1.5rem) — la franja blanca de arriba.
+     4. El block-gap le pone margin-block-start: 24px a cada hermano.
+
+     Cuando la página deje de estar dentro del layout "constrained", borra
+     hasta FIN //TODO:importart y no queda ningún !important. */
+
+  .entry-content > *,
+  #mlPage,
+  #mlBg {
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-block-start: 0 !important;
+  }
+
+  .entry-content.has-global-padding,
+  .wp-block-post-content.has-global-padding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .wp-site-blocks {
+    padding-top: 0 !important;
+  }
+  .wp-site-blocks > main,
+  main.wp-block-group,
+  .entry-content.wp-block-post-content {
+    margin-top: 0 !important;
+  }
+  /* FIN //TODO:importart */
+
+  #mlPage,
+  #mlPage *,
+  #mlPage *::before,
+  #mlPage *::after {
+    box-sizing: border-box;
+  }
+
+  /* Fondo: la portada difuminada a pantalla completa. La referencia usa un
+     color plano de la campaña; aquí lo derivamos del arte para que la página
+     funcione con cualquier release sin tocar un hex a mano. */
+  #mlBg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background-image: url("https://balthvs.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-10-06-at-20.33.37.jpeg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(60px) saturate(1.35);
+    transform: scale(1.25);
+  }
+  #mlScrim {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      to bottom,
+      rgba(12, 10, 16, 0.55) 0%,
+      rgba(12, 10, 16, 0.72) 60%,
+      rgba(12, 10, 16, 0.88) 100%
+    );
+  }
+
+  #mlPage {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px 56px;
+    font-family:
+      "IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .ml-art {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  }
+
+  .ml-title {
+    margin: 22px 0 0;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: center;
+    color: #ffffff;
+    text-wrap: balance;
+  }
+
+  /* La tarjeta: mismo tratamiento de la referencia — panel oscuro
+     semitransparente sobre el fondo, radio 8px. */
+  .ml-card {
+    width: 100%;
+    max-width: 340px;
+    margin-top: 26px;
+    background: rgba(24, 23, 33, 0.7);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .ml-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 13px 12px;
+    text-decoration: none;
+    color: inherit;
+  }
+  .ml-row + .ml-row {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .ml-row:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .ml-logo {
+    height: 40px;
+    width: auto;
+    max-width: 60%;
+    display: block;
+    flex: 0 1 auto;
+  }
+
+  .ml-btn {
+    flex: 0 0 auto;
+    background: #454b5f;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.2px;
+    padding: 12px 16px;
+    border: 0;
+    border-radius: 4px;
+    white-space: nowrap;
+    transition: background 0.18s ease;
+  }
+  .ml-row:hover .ml-btn {
+    background: #565d75;
+  }
+
+  .ml-footnote {
+    margin: 24px 0 0;
+    max-width: 340px;
+    font-size: 11px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.45);
+    text-align: center;
+  }
+
+  @media (max-width: 380px) {
+    #mlPage {
+      padding: 28px 14px 44px;
+    }
+    .ml-art {
+      max-width: 168px;
+    }
+    .ml-logo {
+      height: 34px;
+    }
+  }
+</style>
+
+<div id="mlBg" aria-hidden="true"></div>
+<div id="mlScrim" aria-hidden="true"></div>
+
+<div id="mlPage">
+  <img
+    class="ml-art"
+    src="https://balthvs.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-10-06-at-20.33.37.jpeg"
+    alt="BALTHVS — Transmutations"
+  />
+
+  <h1 class="ml-title">BALTHVS - MANIFEST</h1>
+
+  <!-- TODO: reemplazar cada href="#" por el link real del servicio. -->
+  <div class="ml-card">
+    <a
+      class="ml-row"
+      href="https://open.spotify.com/album/5MOTbRL1bEJWdBJQOpEiTl?si=2541f15dd9e3409f"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img
+        class="ml-logo"
+        src="https://services.linkfire.com/logo_spotify_ondark.svg"
+        alt="Spotify"
+        loading="lazy"
+      />
+      <span class="ml-btn">Play</span>
+    </a>
+
+    <a
+      class="ml-row"
+      href="https://music.apple.com/es/album/manifest/6777066682"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img
+        class="ml-logo"
+        src="https://services.linkfire.com/logo_applemusic_ondark.svg"
+        alt="Apple Music"
+        loading="lazy"
+      />
+      <span class="ml-btn">Play</span>
+    </a>
+
+    <!-- <a
+      class="ml-row"
+      href="https://www.youtube.com/watch?v=n9XtTceTf-s"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img
+        class="ml-logo"
+        src="https://services.linkfire.com/logo_youtube_ondark.svg"
+        alt="YouTube"
+        loading="lazy"
+      />
+      <span class="ml-btn">Play</span>
+    </a> -->
+
+    <a
+      class="ml-row"
+      href="https://music.youtube.com/playlist?list=OLAK5uy_kOKK0hLnozRQCfc7PT5WKBiVCxLoghkCk&si=vSOFyuGpGGtjS4KQ"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img
+        class="ml-logo"
+        src="https://services.linkfire.com/logo_youtubemusic_ondark.svg"
+        alt="YouTube Music"
+        loading="lazy"
+      />
+      <span class="ml-btn">Play</span>
+    </a>
+
+    <a
+      class="ml-row"
+      href="https://music.amazon.es/albums/B0H468CGB5"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img
+        class="ml-logo"
+        src="https://services.linkfire.com/logo_amazonmusic_ondark.svg"
+        alt="Amazon Music"
+        loading="lazy"
+      />
+      <span class="ml-btn">Play</span>
+    </a>
+
+    <a
+      class="ml-row"
+      href="https://link.deezer.com/s/34BA9uc8V57jHbOTsBe8s"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img
+        class="ml-logo"
+        src="https://services.linkfire.com/logo_deezer_ondark.svg"
+        alt="Deezer"
+        loading="lazy"
+      />
+      <span class="ml-btn">Play</span>
+    </a>
+
+    <a
+      class="ml-row"
+      href="https://tidal.com/album/530980596"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img
+        class="ml-logo"
+        src="https://services.linkfire.com/logo_tidal_ondark.svg"
+        alt="TIDAL"
+        loading="lazy"
+      />
+      <span class="ml-btn">Play</span>
+    </a>
+
+    <a
+      class="ml-row"
+      href="https://balthvs.bandcamp.com/album/manifest"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img
+        class="ml-logo"
+        src="https://services.linkfire.com/logo_bandcamp_ondark.svg"
+        alt="Bandcamp"
+        loading="lazy"
+      />
+      <span class="ml-btn">Play</span>
+    </a>
+  </div>
+
+  <p class="ml-footnote">© 2026 BALTHVS. All rights reserved.</p>
+</div>

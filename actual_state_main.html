@@ -1,0 +1,2222 @@
+<meta charset="UTF-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+/>
+
+<!-- Design serif (release/copyright accents) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link
+  href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;display=swap"
+  rel="stylesheet"
+/>
+
+<!-- Newsletter-modal font -->
+<link
+  href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&amp;display=swap"
+  rel="stylesheet"
+/>
+
+<!-- Liminal Stages + Transmutations sections -->
+<link
+  href="https://fonts.googleapis.com/css2?family=TASA+Orbiter:wght@400..800&amp;display=swap"
+  rel="stylesheet"
+/>
+
+<!-- Herqin (base64 @font-face) — used for the TRANSMUTATIONS title -->
+<link rel="stylesheet" href="stylesheet.css" />
+
+<!-- Brevo styles (newsletter form) -->
+<style>
+  @font-face {
+    font-display: block;
+    font-family: Roboto;
+    src:
+      url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2)
+        format("woff2"),
+      url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff)
+        format("woff");
+  }
+  @font-face {
+    font-display: fallback;
+    font-family: Roboto;
+    font-weight: 600;
+    src:
+      url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2)
+        format("woff2"),
+      url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff)
+        format("woff");
+  }
+  @font-face {
+    font-display: fallback;
+    font-family: Roboto;
+    font-weight: 700;
+    src:
+      url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2)
+        format("woff2"),
+      url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff)
+        format("woff");
+  }
+  #sib-container input:-ms-input-placeholder {
+    text-align: left;
+    font-family: Helvetica, sans-serif;
+    color: #c0ccda;
+  }
+  #sib-container input::placeholder {
+    text-align: left;
+    font-family: Helvetica, sans-serif;
+    color: #c0ccda;
+  }
+  #sib-container textarea::placeholder {
+    text-align: left;
+    font-family: Helvetica, sans-serif;
+    color: #c0ccda;
+  }
+  #sib-container a {
+    text-decoration: underline;
+    color: #2bb2fc;
+  }
+</style>
+
+<link
+  rel="stylesheet"
+  href="https://sibforms.com/forms/end-form/build/sib-styles.css"
+/>
+
+<!-- Page design -->
+<style>
+  :root {
+    --accent-red: #bc3a1e;
+    --accent-blue: #3f33d6;
+    --ink: #141210;
+    --paper: #ffffff;
+    --hero-blur: clamp(46px, 3.2vw, 80px);
+
+    /* Fluid scale. Every breakpoint below is max-width, so without these the
+       layout only reacts downward: above ~1440px nothing grew and the page
+       became a fixed-size poster centered in a widening void. All three are
+       tuned to land on the original 1440px values exactly, then keep going.
+         --shell  content column cap    (was a flat 1260px)
+         --pad-x  horizontal gutter     (was a flat 52px)
+         --sec-y  vertical section beat (was flat 92-120px paddings) */
+    /* max(1000px, ...) is the floor: without it the 90vw term also fires on
+       phones and steals ~11% of an already narrow screen. Below ~1111px the
+       shell is effectively full-width and --pad-x alone provides the gutter,
+       exactly as before. */
+    --shell: min(1920px, max(1000px, 90vw));
+    --pad-x: clamp(22px, 3.6vw, 64px);
+    --sec-y: clamp(56px, 6.4vw, 190px);
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  /* //TODO:importart — WORDPRESS HOST OVERRIDES (borrar todo este bloque)
+     ------------------------------------------------------------------
+     Necesarios SOLO mientras este fragmento viva dentro de un bloque
+     custom-HTML del tema Twenty Twenty-Three. Medido en vivo sobre
+     https://balthvs.com/test/ a 2000px de ancho. Cuando la página deje de
+     estar dentro del layout "constrained" del tema, borra hasta el cierre
+     marcado FIN //TODO:importart y no queda ningún !important.
+
+     Lo que hace el tema y por qué duele:
+
+     1. theme.json define --wp--style--global--content-size: 650px, y la regla
+        .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull))
+        se lo aplica como max-width + margin auto a CADA hijo directo de
+        .entry-content. Nuestro #page quedaba en 650px con 643px de margen
+        muerto a cada lado. #nlOverlay (position:fixed, inset:0) también se
+        recortaba a 650px, así que el modal salía angosto.
+
+     2. .entry-content.has-global-padding mete 32px de padding lateral.
+
+     3. <main> arrastra margin-top: 72px y .entry-content otros 24px
+        (--wp--style--block-gap: 1.5rem). Esos 96px son la franja blanca que
+        se ve encima del header negro.
+
+     4. El block-gap también le pone margin-block-start: 24px a cada hermano
+        dentro del bloque. */
+
+  .entry-content > *,
+  #page,
+  #nlOverlay {
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-block-start: 0 !important;
+  }
+
+  .entry-content.has-global-padding,
+  .wp-block-post-content.has-global-padding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .wp-site-blocks {
+    padding-top: 0 !important;
+  }
+  .wp-site-blocks > main,
+  main.wp-block-group,
+  .entry-content.wp-block-post-content {
+    margin-top: 0 !important;
+  }
+  /* FIN //TODO:importart */
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  a {
+    transition:
+      color 0.2s ease,
+      opacity 0.2s ease,
+      background 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  /* ============ HEADER ============ */
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px var(--pad-x);
+    background: #0a0a0a;
+    position: sticky;
+    top: 0;
+    z-index: 60;
+  }
+  .site-logo {
+    height: clamp(29px, 2vw, 40px);
+    width: auto;
+    display: block;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .brand-social {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  /* Reusa los mismos PNG del footer, que son negros para el fondo blanco de
+     abajo. invert(1) los pasa a blanco para el header negro — un asset menos
+     que mantener. */
+  .brand-social img {
+    height: clamp(19px, 1.3vw, 26px);
+    width: auto;
+    display: block;
+    /* brightness empuja el círculo a blanco pleno para igualar el logo; el
+       glifo calado ya es negro y no se mueve. */
+    filter: invert(1) brightness(1.18);
+    transition: opacity 0.2s ease;
+  }
+  .brand-social a:hover img {
+    opacity: 0.65;
+  }
+  .site-nav {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+  }
+  .site-nav a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: clamp(12.5px, 0.85vw, 16px);
+    letter-spacing: 1.8px;
+    white-space: nowrap;
+  }
+  .site-nav a:hover {
+    color: #e5dfdf;
+  }
+
+  /* Hamburger button — hidden on desktop */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    z-index: 70;
+  }
+  .nav-toggle span {
+    display: block;
+    height: 1.5px;
+    width: 24px;
+    background: var(--paper);
+    transition:
+      transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.2s ease;
+  }
+  .nav-open .nav-toggle span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+  .nav-open .nav-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-open .nav-toggle span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  /* ============ ANNOUNCEMENT BAR ============ */
+  .announce {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    padding: 19px var(--pad-x);
+    background: #0a0a0a;
+    color: #fff;
+  }
+  .announce-text {
+    font-size: clamp(14.5px, 1.15vw, 21px);
+    letter-spacing: 0.2px;
+    font-weight: 300;
+  }
+  .announce-text .muted {
+    opacity: 0.65;
+  }
+  .announce-cta {
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    padding: 13px 26px;
+    font-size: 13px;
+    border-radius: 3px;
+    letter-spacing: 2px;
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap;
+    font-weight: 800;
+  }
+  .announce-cta:hover {
+    background: #fff;
+    color: #0a0a0a;
+  }
+  /* Dark variant for use on the light hero */
+  .announce-cta--dark {
+    display: inline-block;
+    border-color: rgba(22, 17, 13, 0.45);
+    color: #16110d;
+  }
+  .announce-cta--dark:hover {
+    background: #16110d;
+    color: #fff;
+  }
+  /* Filled variant — the streaming action, so it outranks the outlined BUY. */
+  .announce-cta--fill {
+    display: inline-block;
+    background: #16110d;
+    border-color: #16110d;
+    color: #fff;
+  }
+  .announce-cta--fill:hover {
+    background: transparent;
+    color: #16110d;
+  }
+  /* fit-content encoge el contenedor al botón más ancho y stretch iguala al
+     otro contra ese ancho — sin fijar px que se rompan al cambiar el texto. */
+  .hero-ctas {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: fit-content;
+    gap: 14px;
+  }
+  .hero-ctas .announce-cta {
+    text-align: center;
+  }
+
+  /* TASA Orbiter across the Transmutations + Liminal/Tour content.
+     Weight is set per element by prominence; the TRANSMUTATIONS hero title
+     keeps its Herqin display face via its own font-family. */
+  /* ============ NEXT SHOW ============
+     Oculta hasta que haya un show que mostrar (ver is-ready en el script). */
+  .next-show {
+    display: none;
+    background: var(--paper);
+  }
+  .next-show.is-ready {
+    display: block;
+  }
+  .next-show-inner {
+    max-width: var(--shell);
+    margin: 0 auto;
+    padding: calc(var(--sec-y) * 0.62) clamp(16px, 2.2vw, 56px);
+    display: grid;
+    /* El evento manda: la columna del título se encoge a su contenido para que
+       la fila del show conserve el ancho que el widget necesita. */
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: clamp(24px, 3.4vw, 64px);
+    align-items: center;
+  }
+  .next-show-title {
+    font-size: clamp(34px, 3.4vw, 64px);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1;
+    margin: 10px 0 0;
+    color: #0e0c0a;
+  }
+  /* Los contenedores del widget reservan sitio para la lista que viene debajo:
+     10px de padding inferior y 10px de margen. Con un único evento eso es aire
+     muerto al fondo de la caja, y es lo que descuadraba el texto hacia arriba.
+     Sólo aplica al Next Show: en la lista real ese espacio sí separa. */
+  #nextShowMount [class*="-widget"],
+  #nextShowMount [class*="-upcoming-events"] {
+    padding-bottom: 0;
+    margin: 0;
+  }
+  /* El evento trae la separadora gris que lo divide del siguiente en la lista;
+     en el Next Show está solo, así que esa línea no separa de nada. */
+  #nextShowMount [class*="-event"] {
+    border: 0;
+  }
+  @media (max-width: 900px) {
+    .next-show-inner {
+      grid-template-columns: 1fr;
+      gap: 22px;
+    }
+  }
+
+  .announce,
+  .hero-copy,
+  .next-show,
+  #tour {
+    font-family: "TASA Orbiter", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  /* ============ TRANSMUTATIONS HERO ============ */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background: var(--paper);
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url("https://balthvs.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-10-06-at-20.33.37.jpeg");
+    background-size: cover;
+    background-position: center bottom;
+    filter: blur(var(--hero-blur));
+    transform: scale(1.18);
+  }
+  .hero-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      #ffffff 0%,
+      #ffffff 20%,
+      rgba(255, 255, 255, 0.86) 46%,
+      rgba(255, 255, 255, 0.5) 72%,
+      rgba(255, 255, 255, 0.06) 100%
+    );
+  }
+  .hero-inner {
+    position: relative;
+    max-width: var(--shell);
+    margin: 0 auto;
+    padding: calc(var(--sec-y) * 1.3) var(--pad-x) calc(var(--sec-y) * 1.62);
+    display: grid;
+    /* Percentage, not a px cap: 40% reproduces the original 480/1192 split at
+       1440px and keeps that proportion as --shell grows, instead of leaving a
+       480px cover stranded in a 1920px column. */
+    grid-template-columns: minmax(300px, 40%) minmax(0, 1fr);
+    gap: clamp(44px, 5vw, 110px);
+    align-items: center;
+  }
+  .hero-cover {
+    border-radius: 3px;
+    width: 100%;
+    display: block;
+    box-shadow: 0 34px 90px rgba(20, 12, 6, 0.32);
+  }
+  .hc {
+    position: relative;
+    aspect-ratio: 1 / 1;
+  }
+  .hc-track {
+    display: flex;
+    height: 100%;
+    overflow-x: auto;
+    border-radius: 3px;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+  .hc-track::-webkit-scrollbar { display: none; }
+  .hc-track:focus-visible { outline: 2px solid var(--accent-blue); outline-offset: 3px; }
+  .hc-track img {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    user-select: none;
+  }
+  .hc-arrow {
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.88);
+    color: var(--ink);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .hc-prev { left: 12px; }
+  .hc-next { right: 12px; }
+  .hc:hover .hc-arrow, .hc:focus-within .hc-arrow { opacity: 1; }
+  .hc-arrow:disabled { opacity: 0 !important; pointer-events: none; }
+  .hc-arrow:focus-visible, .hc-dot:focus-visible { outline: 2px solid var(--accent-blue); outline-offset: 2px; }
+  @media (hover: none) { .hc-arrow { opacity: 1; } }
+  .hc-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+    border-radius: 999px;
+    background: rgba(10, 8, 6, 0.32);
+  }
+  .hc-dot {
+    /* 24px hit area, 6px visible dot */
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+  }
+  .hc-dot::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.55);
+    transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.4s;
+  }
+  .hc-dot[aria-current="true"]::before { width: 16px; background: #fff; }
+  @media (prefers-reduced-motion: reduce) {
+    .hc-track { scroll-behavior: auto; }
+    .hc-arrow, .hc-dot::before { transition: none; }
+  }
+  .hero-copy {
+    min-width: 0;
+  }
+  .eyebrow {
+    font-size: clamp(13px, 0.9vw, 17px);
+    letter-spacing: 3.5px;
+    font-weight: 600;
+  }
+  .eyebrow.blue {
+    color: var(--accent-blue);
+  }
+  .eyebrow.red {
+    color: var(--accent-red);
+  }
+  .hero-title {
+    font-family: "TASA Orbiter", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 900;
+    font-size: clamp(34px, 4.4vw, 96px);
+    line-height: 1;
+    letter-spacing: 0.5px;
+    margin: 16px 0 22px;
+    color: #16110d;
+    overflow-wrap: break-word;
+  }
+  .hero-release {
+    font-size: clamp(21px, 1.45vw, 28px);
+    font-weight: 600;
+    color: #2b2722;
+    margin: 0 0 30px;
+  }
+  .hero-body {
+    font-size: clamp(17px, 1.15vw, 23px);
+    line-height: 1.72;
+    color: #46403a;
+    /* Measure in em, not px: the line grows with the type instead of
+       stretching past a comfortable ~34 characters. */
+    max-width: 34em;
+    margin: 0;
+  }
+
+  /* ============ LIMINAL + TOUR ============ */
+  .countdown-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 44px;
+    border-bottom: 1px solid #ececec;
+    border-top: 1px solid #ececec;
+    background: var(--paper);
+  }
+  .countdown-bar span {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #2a2a2a;
+    text-align: center;
+  }
+  .video-row {
+    background: #0a0a0a;
+    line-height: 0;
+  }
+  /* Cap the video by HEIGHT, not width: capping the height directly would
+     stretch it off 16:9 and make YouTube letterbox inside the frame. Deriving
+     a max-width from the height keeps the ratio exact and lets the row's own
+     black ground fill the sides. */
+  .video-row iframe {
+    display: block;
+    width: 100%;
+    max-width: calc(90vh * 16 / 9);
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    border: 0;
+  }
+  /* Tour — one centered column, no inner scroll: the block grows to the full
+     length of the Bandsintown list. Inner width (max-width minus padding) must
+     stay above ~1000px or the widget drops to its stacked "ipad" layout. */
+  .tour-block {
+    background: var(--paper);
+    max-width: var(--shell);
+    margin: 0 auto;
+    /* Tighter gutter than --pad-x on purpose: the widget needs >1000px of
+       inner width or it drops to its stacked layout, and the shared gutter
+       eats into that on ~1200px laptops. */
+    padding: var(--sec-y) clamp(16px, 2.2vw, 56px) calc(var(--sec-y) * 1.04);
+    text-align: center;
+  }
+  .cell-title {
+    font-size: clamp(44px, 4.3vw, 92px);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    margin: 14px 0 18px;
+    color: #0e0c0a;
+    line-height: 1;
+  }
+  .cell-sub {
+    font-size: clamp(18px, 1.2vw, 24px);
+    font-weight: 500;
+    color: #56524d;
+    margin: 0 0 34px;
+  }
+  .link-underline {
+    display: inline-block;
+    margin-top: 36px;
+    color: #8a8a8a;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    border-bottom: 1px solid #cfcfcf;
+    padding-bottom: 5px;
+    text-decoration: none;
+  }
+  .link-underline:hover {
+    color: var(--ink);
+  }
+  .bit-wrap {
+    text-align: left;
+  }
+  /* Cada evento en tres líneas — fecha, ciudad, venue — a la izquierda, con
+     compartir y TICKETS a la derecha. Vale para la lista de On Tour y para la
+     copia del Next Show; los ids son por especificidad, porque el widget
+     inyecta su hoja en runtime y esa siempre va después de ésta.
+
+     El widget reparte fecha y ciudad en dos columnas fijas (400px + el resto)
+     dentro de una <a> flex. En bloque, sus hijos se apilan y el venue, que ya
+     es hermano posterior, cae tercero. El selector excluye a propósito
+     .*-location-under-desktop, hermano oculto con la misma ciudad: mostrarlo
+     la duplicaría. Prefijo comodín porque la copia del Next Show va con
+     nsx- en vez de bit-. */
+  #tourWrap [class*="-details-inner-wrapper"] > a[class*="-details"],
+  #nextShowMount [class*="-details-inner-wrapper"] > a[class*="-details"] {
+    display: block;
+  }
+  #tourWrap [class*="-date-wrapper"],
+  #nextShowMount [class*="-date-wrapper"] {
+    width: auto;
+  }
+  /* Apilada, la ciudad es la línea del medio y arrastra el centrado y los 86px
+     de canaleta de la columna central del layout de tres columnas; ambos la
+     sacan del eje de la fecha y el venue. */
+  #tourWrap [class*="-location"],
+  #nextShowMount [class*="-location"] {
+    text-align: left;
+    padding-left: 0;
+  }
+  /* El bloque de texto ahora es más alto que la flecha y el botón: sin esto
+     quedarían pegados arriba en vez de centrados contra las tres líneas. */
+  #tourWrap [class*="-event"],
+  #nextShowMount [class*="-event"] {
+    align-items: center;
+  }
+  /* Compartir = sólo copiar enlace. El panel del widget trae cuatro iconos en
+     este orden fijo (Facebook, X, email, enlace); se ocultan los tres primeros
+     en la lista completa y en la copia del Next Show, que lleva prefijo nsx-.
+     Tres clases de especificidad para ganarle al CSS que el widget inyecta en
+     runtime, siempre posterior a esta hoja. */
+  .bit-wrap .bit-social-share-social-icon-wrapper .bit-social-link-wrapper,
+  .bit-wrap .nsx-social-share-social-icon-wrapper .nsx-social-link-wrapper {
+    display: none;
+  }
+  .bit-wrap
+    .bit-social-share-social-icon-wrapper
+    .bit-social-link-wrapper:last-child,
+  .bit-wrap
+    .nsx-social-share-social-icon-wrapper
+    .nsx-social-link-wrapper:last-child {
+    display: flex;
+  }
+
+  /* ---- ≤941px: cada evento en columna centrada ----
+     Fecha, ciudad, venue, compartir y TICKETS, uno bajo otro y centrados, en On
+     Tour y en la copia del Next Show. On Tour ya se apila en su franja tablet;
+     estas reglas lo unifican hasta 941 y, sobre todo, fuerzan a la copia del
+     Next Show —que puede quedar congelada en el layout desktop del widget— a la
+     misma columna. Por encima de 941 el @media se apaga y vuelve a la fila
+     normal. Comodín de prefijo: vale para la lista (bit-) y la copia (nsx-).
+     El id gana especificidad a la hoja que el widget inyecta en runtime. */
+  @media (max-width: 941px) {
+    #tourWrap [class*="-event"],
+    #nextShowMount [class*="-event"] {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    #tourWrap [class*="-details-inner-wrapper"],
+    #nextShowMount [class*="-details-inner-wrapper"] {
+      width: 100%;
+      text-align: center;
+    }
+    /* En desktop el widget pone esta fila interna en flex-row; en columna se
+       apila. */
+    #tourWrap [class*="-details-inner-wrapper"] [class*="-details"],
+    #nextShowMount [class*="-details-inner-wrapper"] [class*="-details"] {
+      display: block;
+      text-align: center;
+    }
+    /* La columna de fecha del layout desktop reserva 400px y alinea a la
+       izquierda; se libera y se centra. */
+    #tourWrap [class*="-date-wrapper"],
+    #nextShowMount [class*="-date-wrapper"] {
+      min-width: 0;
+      text-align: center;
+    }
+    #tourWrap [class*="-location"],
+    #nextShowMount [class*="-location"] {
+      padding-left: 0;
+      min-width: 0;
+      text-align: center;
+    }
+    #tourWrap [class*="-titleWrapper"],
+    #nextShowMount [class*="-titleWrapper"] {
+      margin: 0 auto;
+      text-align: center;
+    }
+    #tourWrap [class*="-venue"],
+    #nextShowMount [class*="-venue"] {
+      width: auto;
+      margin: 0 auto;
+    }
+    /* En desktop TICKETS lleva margin-left:auto (lo empuja a la derecha); en
+       columna se centra. */
+    #tourWrap [class*="-event-buttons"],
+    #nextShowMount [class*="-event-buttons"] {
+      margin: 0 auto;
+    }
+    /* Compartir centrado: se anula el margin-left del bloque y el margen
+       asimétrico del ícono que lo dejaba corrido. */
+    #tourWrap [class*="-desktop-social-share-button"],
+    #nextShowMount [class*="-desktop-social-share-button"] {
+      margin-left: 0;
+      display: flex;
+      justify-content: center;
+      padding: 60px;
+    }
+    #tourWrap [class*="-social-wrapper"],
+    #nextShowMount [class*="-social-wrapper"] {
+      justify-content: center;
+    }
+    #tourWrap [class*="-social-share-icon-wrapper"] svg,
+    #nextShowMount [class*="-social-share-icon-wrapper"] svg {
+      margin: 0;
+    }
+  }
+
+  /* ============ ALBUMS ============ */
+  .albums {
+    padding: calc(var(--sec-y) * 1.04) var(--pad-x) calc(var(--sec-y) * 0.83);
+    text-align: center;
+    background: var(--paper);
+  }
+  .albums-title {
+    font-size: clamp(15px, 1vw, 20px);
+    letter-spacing: 9px;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0;
+  }
+  .divider {
+    height: 54px;
+    width: auto;
+    display: block;
+    margin: 28px auto 54px;
+  }
+  .divider.flip {
+    margin: 54px auto 0;
+    transform: rotate(180deg);
+  }
+  .albums-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 26px;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: var(--shell);
+    margin: 0 auto;
+  }
+  .albums-row a {
+    display: block;
+    min-width: 0;
+    text-decoration: none;
+  }
+  .albums-row img {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    transition:
+      transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.3s ease;
+  }
+  .albums-row a:hover img {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.2);
+  }
+
+  /* ============ FOOTER ============ */
+  .site-footer {
+    padding: calc(var(--sec-y) * 0.78) var(--pad-x) calc(var(--sec-y) * 0.89);
+    text-align: center;
+    background: var(--paper);
+  }
+  /* Same look as the Bandsintown "FOLLOW" CTA in #tour */
+  .footer-subscribe {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 40px;
+    padding: 12px 48px;
+    border: 1px solid var(--ink);
+    border-radius: 3px;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+  }
+  .footer-subscribe:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .footer-divider {
+    height: 46px;
+    width: auto;
+    display: inline-block;
+  }
+  .footer-sun {
+    height: 92px;
+    width: auto;
+    display: block;
+    margin: 34px auto 26px;
+  }
+  .footer-copy {
+    font-style: italic;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(16px, 1.1vw, 21px);
+    color: #2a2622;
+    letter-spacing: 0.3px;
+    margin: 0 0 26px;
+  }
+  .social-row {
+    display: inline-flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+  }
+  .social-row img {
+    height: 40px;
+    width: auto;
+    display: block;
+  }
+  .social-row a:hover img {
+    opacity: 0.6;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 980px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 44px;
+    }
+    .hero-cover {
+      max-width: 420px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .site-header {
+      padding: 18px var(--pad-x);
+    }
+    .nav-toggle {
+      display: flex;
+    }
+    .site-nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: min(320px, 84vw);
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 26px;
+      padding: 40px 44px;
+      background: #0a0a0a;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: -24px 0 60px rgba(20, 12, 6, 0.16);
+      transform: translateX(100%);
+      transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+      z-index: 65;
+    }
+    .nav-open .site-nav {
+      transform: translateX(0);
+    }
+    .site-nav a {
+      font-size: 16px;
+      letter-spacing: 2.4px;
+    }
+    .nav-scrim {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 8, 6, 0.45);
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+      z-index: 55;
+    }
+    .nav-open .nav-scrim {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .announce {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 18px var(--pad-x);
+    }
+    .announce-cta {
+      align-self: stretch;
+      text-align: center;
+    }
+
+    .hero-release {
+      font-size: 19px;
+    }
+
+    .albums-row {
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .albums-row a:last-child {
+      grid-column: 1 / -1;
+      justify-self: center;
+      width: calc((100% - 18px) / 2);
+    }
+    .albums-title {
+      letter-spacing: 6px;
+    }
+  }
+
+  @media (max-width: 440px) {
+    .cell-title {
+      font-size: 38px;
+    }
+    .footer-sun {
+      height: 72px;
+    }
+    .social-row img {
+      height: 30px;
+    }
+    .social-row {
+      gap: 22px;
+    }
+  }
+
+  /* ============ NEWSLETTER MODAL ============
+     Do not use display:none (keeps reCAPTCHA mounted/stable). */
+  .nl-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 120ms linear,
+      visibility 120ms linear;
+  }
+  .nl-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .nl-modal {
+    box-sizing: border-box;
+    width: min(980px, 100%);
+    max-height: 90vh;
+    overflow: auto;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #000;
+    position: relative;
+    padding: 18px 18px 22px;
+  }
+  .nl-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    border: 1px solid #000;
+    background: #fff;
+    color: #000;
+    font-weight: 600;
+    padding: 6px 10px;
+    cursor: pointer;
+    letter-spacing: 0.138em;
+    font-family: "Nunito Sans", sans-serif;
+  }
+  .nl-close:hover {
+    background: #000;
+    color: #fff;
+  }
+  .nl-body {
+    margin-top: 18px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  /* Nunito override only inside modal */
+  #nlOverlay #sib-form-container,
+  #nlOverlay #sib-form-container *,
+  #nlOverlay #sib-container,
+  #nlOverlay #sib-container * {
+    font-family: "Nunito Sans", sans-serif !important;
+  }
+  #nlOverlay #sib-form button,
+  #nlOverlay #sib-form .sib-form-block__button,
+  #nlOverlay #sib-form .sib-form-block__button-with-loader {
+    font-family: "Nunito Sans", sans-serif !important;
+    letter-spacing: 0.138em !important;
+    text-transform: uppercase;
+    font-weight: 600 !important;
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border-width: 0 !important;
+    border-radius: 3px !important;
+  }
+  #nlOverlay #sib-form button:hover,
+  #nlOverlay #sib-form .sib-form-block__button:hover,
+  #nlOverlay #sib-form .sib-form-block__button-with-loader:hover {
+    background-color: #6b0000 !important;
+  }
+  @media (max-width: 480px) {
+    .hc-arrow { display: none; } /* swipe + dots on phones */
+    .hc-dots { bottom: 6px; }
+    .nl-modal {
+      padding: 14px 14px 18px;
+    }
+  }
+</style>
+
+<div class="page" id="page">
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="brand">
+      <a href="https://balthvs.com/" aria-label="BALTHVS home">
+        <img
+          class="site-logo"
+          src="https://balthvs.com/wp-content/uploads/2026/06/BALTHVS_LOGO_WHITE.png"
+          alt="BALTHVS"
+        />
+      </a>
+      <div class="brand-social">
+        <a
+          href="https://open.spotify.com/artist/2CtiNJi0zB35RHYXViVjKG"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="BALTHVS on Spotify"
+        >
+          <img
+            src="https://balthvs.com/wp-content/uploads/2025/12/Spotify-Icon-Black-Logo.wine_.png"
+            alt="Spotify"
+          />
+        </a>
+        <a
+          href="https://music.apple.com/us/artist/balthvs/1502104696"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="BALTHVS on Apple Music"
+        >
+          <img
+            src="https://balthvs.com/wp-content/uploads/2025/12/Apple-Music.png"
+            alt="Apple Music"
+          />
+        </a>
+        <a
+          href="https://www.instagram.com/balthvsmusic"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="BALTHVS on Instagram"
+        >
+          <img
+            src="https://balthvs.com/wp-content/uploads/2025/12/Instagram.png"
+            alt="Instagram"
+          />
+        </a>
+        <a
+          href="https://balthvsmusic.bandcamp.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="BALTHVS on Bandcamp"
+        >
+          <img
+            src="https://balthvs.com/wp-content/uploads/2025/12/Bandcamp.png"
+            alt="Bandcamp"
+          />
+        </a>
+      </div>
+    </div>
+
+    <button
+      class="nav-toggle"
+      id="navToggle"
+      type="button"
+      aria-label="Menu"
+      aria-expanded="false"
+      aria-controls="siteNav"
+    >
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="site-nav" id="siteNav" aria-label="Primary">
+      <a
+        rel="noopener noreferrer"
+        target="_blank"
+        href="https://balthvs.com/albums/"
+        >MUSIC</a
+      >
+      <a
+        href="https://balthvs.com/tour/"
+        target="_blank"
+        rel="noopener noreferrer"
+        >TOUR</a
+      >
+      <a
+        href="https://www.youtube.com/@balthvs"
+        target="_blank"
+        rel="noopener noreferrer"
+        >VIDEOS</a
+      >
+      <a
+        href="https://paidtabs.com/BALTHVS"
+        target="_blank"
+        rel="noopener noreferrer"
+        >TABS</a
+      >
+      <a
+        href="https://laylo.com/balthvs"
+        target="_blank"
+        rel="noopener noreferrer"
+        >SUBSCRIBE</a
+      >
+      <a href="https://balthvs.com/about/">ABOUT</a>
+      <a href="https://balthvs.com/contact/">CONTACTS</a>
+    </nav>
+  </header>
+  <div class="nav-scrim" id="navScrim" aria-hidden="true"></div>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announce">
+    <span class="announce-text"
+      >MANIFEST — 140 Gram Orange splatter LP
+      <span class="muted">(full-text jacket art/ Obi strip) </span></span
+    >
+    <a
+      class="announce-cta"
+      href="https://balthvs.bandcamp.com/album/manifest"
+      target="_blank"
+      rel="noopener noreferrer"
+      >BUY (SHIPS TO US, CA, EU, UK, JP)</a
+    >
+  </div>
+
+  <!-- manifest HERO -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="hero-cover hc" id="heroCarousel" role="region" aria-roledescription="carousel" aria-label="MANIFEST photos">
+        <div class="hc-track" tabindex="0">
+          <img
+            src="https://balthvs.com/wp-content/uploads/2026/10/1-scaled.jpg"
+            alt="MANIFEST vinyl, photo 1 of 3"
+            width="2560" height="2560"
+            draggable="false"
+          />
+          <img
+            src="https://balthvs.com/wp-content/uploads/2026/10/2-scaled.jpg"
+            alt="MANIFEST vinyl, photo 2 of 3"
+            width="2560" height="2560"
+            loading="lazy" draggable="false"
+          />
+          <img
+            src="https://balthvs.com/wp-content/uploads/2026/10/3-1-scaled.jpg"
+            alt="MANIFEST vinyl, photo 3 of 3"
+            width="2560" height="2560"
+            loading="lazy" draggable="false"
+          />
+        </div>
+        <button type="button" class="hc-arrow hc-prev" aria-label="Previous photo">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="button" class="hc-arrow hc-next" aria-label="Next photo">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="hc-dots">
+          <button type="button" class="hc-dot" aria-label="Go to photo 1"></button>
+          <button type="button" class="hc-dot" aria-label="Go to photo 2"></button>
+          <button type="button" class="hc-dot" aria-label="Go to photo 3"></button>
+        </div>
+      </div>
+      <div class="hero-copy">
+        <div class="eyebrow red">NEW VINYL</div>
+        <h1 class="hero-title">MANIFEST</h1>
+        <p class="hero-body">
+          MANIFEST - 140 Gram Bronze Splatter LP (Full-text Jacket Art/ Obi
+          strip) MR1616 - Press Of 2000 Units. <br />SHIPS TO US, CA, EU, UK, JP
+          <br />SHIPS ON OCT 7TH 2026
+        </p>
+        <p class="hero-release">$30.00</p>
+        <div class="hero-ctas">
+          <a
+            class="announce-cta announce-cta--dark"
+            href="https://balthvs.bandcamp.com/album/manifest"
+            target="_blank"
+            rel="noopener noreferrer"
+            >ORDER VINYL
+          </a>
+          <a
+            class="announce-cta announce-cta--fill"
+            href="https://balthvs.com/manifest-multilink/"
+            >STREAM NOW!</a
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT SHOW — single date cloned from the Bandsintown list below -->
+  <section class="next-show" id="nextShow">
+    <div class="next-show-inner">
+      <div class="next-show-head">
+        <div class="eyebrow red">MANIFEST TOUR '26</div>
+        <h2 class="next-show-title">Next Show</h2>
+      </div>
+      <div class="bit-wrap" id="nextShowMount"></div>
+    </div>
+  </section>
+
+  <!-- LIMINAL STAGES + TOUR -->
+  <section id="tour">
+    <!-- Liminal Stages (Dark Session) — full-bleed, autoplays muted on scroll.
+         mute=1 is required: browsers block unmuted autoplay outright.
+         enablejsapi=1 lets the observer below drive play/pause via postMessage. -->
+    <div class="video-row">
+      <iframe
+        id="liminalVideo"
+        src="https://www.youtube.com/embed/_Ugxp7xVjYw?enablejsapi=1&amp;mute=1&amp;playsinline=1&amp;rel=0"
+        title="BALTHVS — Liminal Stages (Dark Session)"
+        frameborder="0"
+        allow="
+          accelerometer;
+          autoplay;
+          clipboard-write;
+          encrypted-media;
+          gyroscope;
+          picture-in-picture;
+          web-share;
+        "
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen=""
+      ></iframe>
+    </div>
+
+    <div class="tour-block">
+      <div class="eyebrow red">MANIFEST TOUR '26</div>
+      <h2 class="cell-title">On Tour</h2>
+      <p class="cell-sub">Every upcoming show, live from Bandsintown.</p>
+
+      <!-- Bandsintown widget v3 — dates come from the artist account
+             (id_15514057); nothing here is hand-maintained. -->
+      <div class="bit-wrap" id="tourWrap">
+        <a
+          class="bit-widget-initializer"
+          data-artist-name="id_15514057"
+          data-app-id="714a1220ae4ad9ac8cbf3e5b66a42da0"
+          data-language="en"
+          data-display-limit="all"
+          data-display-lineup="false"
+          data-display-start-time="false"
+          data-social-share-icon="true"
+          data-local-dates-position="tab"
+          data-auto-style="false"
+          data-font="TASA Orbiter"
+          data-background-color="#ffffff"
+          data-separator-color="#e7e7e7"
+          data-text-color="#141210"
+          data-header-capitalization="uppercase"
+          data-button-label-capitalization="uppercase"
+          data-location-capitalization="capitalize"
+          data-venue-capitalization="capitalize"
+          data-date-format="MMM D"
+          data-date-orientation="horizontal"
+          data-date-capitalization="capitalize"
+          data-date-border-color="#e7e7e7"
+          data-date-border-width="1px"
+          data-date-border-radius="3px"
+          data-event-ticket-text="TICKETS"
+          data-event-ticket-cta-size="medium"
+          data-event-ticket-icon="false"
+          data-event-ticket-cta-text-color="#ffffff"
+          data-event-ticket-cta-bg-color="#0a0a0a"
+          data-event-ticket-cta-border-color="#0a0a0a"
+          data-event-ticket-cta-border-width="0px"
+          data-event-ticket-cta-border-radius="3px"
+          data-sold-out-button-text-color="#6a6a6a"
+          data-sold-out-button-background-color="#f2f2f2"
+          data-sold-out-button-border-color="#e7e7e7"
+          data-sold-out-button-clickable="false"
+          data-event-rsvp-position="hidden"
+          data-follow-section-position="bottom"
+          data-follow-section-alignment="left"
+          data-follow-section-header-text="Get updates on new shows"
+          data-follow-section-cta-text="FOLLOW"
+          data-follow-section-cta-size="medium"
+          data-follow-section-cta-icon="true"
+          data-follow-section-cta-text-color="#141210"
+          data-follow-section-cta-bg-color="#ffffff"
+          data-follow-section-cta-border-color="#141210"
+          data-follow-section-cta-border-width="1px"
+          data-follow-section-cta-border-radius="3px"
+          data-play-my-city-position="bottom"
+          data-play-my-city-alignment="left"
+          data-play-my-city-header-text="Don't see a show near you?"
+          data-play-my-city-cta-text="REQUEST A SHOW"
+          data-play-my-city-cta-size="medium"
+          data-play-my-city-cta-icon="true"
+          data-play-my-city-cta-text-color="#141210"
+          data-play-my-city-cta-bg-color="#ffffff"
+          data-play-my-city-cta-border-color="#141210"
+          data-play-my-city-cta-border-width="1px"
+          data-play-my-city-cta-border-radius="3px"
+          data-bit-logo-position="bottomRight"
+          data-bit-logo-color="#a2a2a2"
+        ></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <a
+      class="footer-subscribe"
+      href="https://laylo.com/balthvs"
+      target="_blank"
+      rel="noopener noreferrer"
+      >SUBSCRIBE</a
+    >
+    <img
+      class="footer-divider"
+      src="https://balthvs.com/wp-content/uploads/2025/12/HEADERSArtboard-2-scaled.png"
+      alt=""
+      aria-hidden="true"
+    />
+    <img
+      class="footer-sun"
+      src="https://balthvs.com/wp-content/uploads/2025/12/Pantacle-Clean-Black-scaled.png"
+      alt=""
+      aria-hidden="true"
+    />
+    <p class="footer-copy">© 2026 BALTHVS. All rights reserved.</p>
+    <div class="social-row" aria-label="Social links">
+      <a
+        href="https://open.spotify.com/artist/2CtiNJi0zB35RHYXViVjKG"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="https://balthvs.com/wp-content/uploads/2025/12/Spotify-Icon-Black-Logo.wine_.png"
+          alt="Spotify"
+        />
+      </a>
+      <a
+        href="https://music.apple.com/us/artist/balthvs/1502104696"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="https://balthvs.com/wp-content/uploads/2025/12/Apple-Music.png"
+          alt="Apple Music"
+        />
+      </a>
+      <a
+        href="https://www.instagram.com/balthvsmusic"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="https://balthvs.com/wp-content/uploads/2025/12/Instagram.png"
+          alt="Instagram"
+        />
+      </a>
+      <a
+        href="https://balthvsmusic.bandcamp.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="https://balthvs.com/wp-content/uploads/2025/12/Bandcamp.png"
+          alt="Bandcamp"
+        />
+      </a>
+    </div>
+  </footer>
+</div>
+
+<!-- Code Brevo
+Newsletter Modal
+<div class="nl-overlay" id="nlOverlay" aria-hidden="true">
+  <div
+    class="nl-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Newsletter signup"
+  >
+    <button class="nl-close" type="button" id="nlClose">CLOSE</button>
+    <div class="nl-body">
+      <div
+        class="sib-form"
+        style="text-align: center; background-color: #ffffff"
+      >
+        <div id="sib-form-container" class="sib-form-container">
+          <div
+            id="error-message"
+            class="sib-form-message-panel"
+            style="
+              font-size: 16px;
+              text-align: left;
+              font-family: Helvetica, sans-serif;
+              color: #661d1d;
+              background-color: #ffeded;
+              border-radius: 3px;
+              border-color: #ff4949;
+              max-width: 540px;
+            "
+          >
+            <div
+              class="sib-form-message-panel__text sib-form-message-panel__text--center"
+            >
+              <svg
+                viewBox="0 0 512 512"
+                class="sib-icon sib-notification__icon"
+              >
+                <path
+                  d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z"
+                ></path>
+              </svg>
+              <span class="sib-form-message-panel__inner-text">
+                Your subscription could not be saved. Please try again.
+              </span>
+            </div>
+          </div>
+
+          <div
+            id="success-message"
+            class="sib-form-message-panel"
+            style="
+              font-size: 16px;
+              text-align: left;
+              font-family: Helvetica, sans-serif;
+              color: #085229;
+              background-color: #e7faf0;
+              border-radius: 3px;
+              border-color: #13ce66;
+              max-width: 540px;
+            "
+          >
+            <div
+              class="sib-form-message-panel__text sib-form-message-panel__text--center"
+            >
+              <svg
+                viewBox="0 0 512 512"
+                class="sib-icon sib-notification__icon"
+              >
+                <path
+                  d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z"
+                ></path>
+              </svg>
+              <span class="sib-form-message-panel__inner-text">
+                Success! You're in.
+              </span>
+            </div>
+          </div>
+
+          <div
+            id="sib-container"
+            class="sib-container--large sib-container--vertical"
+            style="
+              text-align: center;
+              background-color: rgba(255, 255, 255, 1);
+              max-width: 540px;
+              border-radius: 3px;
+              border-width: 1px;
+              border-color: #c0ccd9;
+              border-style: solid;
+              direction: ltr;
+            "
+          >
+            <form
+              id="sib-form"
+              method="POST"
+              action="https://fdf4ad6d.sibforms.com/serve/MUIFAPwKvSXzqWLr0PYgLSh6aDe0z4Mh_cJ4wAsLf0e0qLvH277tzVN6bWdL3zqGauhGS_Hk96182ajkc_v1vWg4ZB08m8VYXOb1X2YNvFmB36pFR8AU_lIIO-u4mc3z_MJAQcGnVrxwIkJX1SqXwzpw-Fi0Asl4Hgcc8FGTyHgDU1Cc6KYqMtkQPX5v8BJRSzFlNyUnMoaaxF0B"
+              data-type="subscription"
+            >
+              <div style="padding: 8px 0">
+                <div
+                  class="sib-form-block sib-image-form-block"
+                  style="text-align: center"
+                >
+                  <img
+                    src="https://img.mailinblue.com/3753208/images/content_library/original/694b40c96c09da4842d54380.png"
+                    style="width: 500px; height: 124px"
+                    alt=""
+                    title=""
+                  />
+                </div>
+              </div>
+
+              <div style="padding: 8px 0">
+                <div class="sib-input sib-form-block">
+                  <div class="form__entry entry_block">
+                    <div class="form__label-row">
+                      <label
+                        class="entry__label"
+                        style="
+                          font-weight: 700;
+                          text-align: left;
+                          font-size: 16px;
+                          font-family: Helvetica, sans-serif;
+                          color: #3c4858;
+                        "
+                        for="EMAIL"
+                        data-required="*"
+                        >Email</label
+                      >
+                      <div class="entry__field">
+                        <input
+                          class="input"
+                          type="text"
+                          id="EMAIL"
+                          name="EMAIL"
+                          autocomplete="off"
+                          placeholder="Email"
+                          data-required="true"
+                          required=""
+                        />
+                      </div>
+                    </div>
+                    <label
+                      class="entry__error entry__error--primary"
+                      style="
+                        font-size: 16px;
+                        text-align: left;
+                        font-family: Helvetica, sans-serif;
+                        color: #661d1d;
+                        background-color: #ffeded;
+                        border-radius: 3px;
+                        border-color: #ff4949;
+                      "
+                    ></label>
+                  </div>
+                </div>
+              </div>
+
+              <div style="padding: 8px 0">
+                <div class="sib-input sib-form-block">
+                  <div class="form__entry entry_block">
+                    <div class="form__label-row">
+                      <label
+                        class="entry__label"
+                        style="
+                          font-weight: 700;
+                          text-align: left;
+                          font-size: 16px;
+                          font-family: Helvetica, sans-serif;
+                          color: #3c4858;
+                        "
+                        for="COUNTRY"
+                        >Enter your Country</label
+                      >
+                      <div class="entry__field">
+                        <input
+                          class="input"
+                          maxlength="200"
+                          type="text"
+                          id="COUNTRY"
+                          name="COUNTRY"
+                          autocomplete="off"
+                          placeholder="Country"
+                        />
+                      </div>
+                    </div>
+                    <label
+                      class="entry__error entry__error--primary"
+                      style="
+                        font-size: 16px;
+                        text-align: left;
+                        font-family: Helvetica, sans-serif;
+                        color: #661d1d;
+                        background-color: #ffeded;
+                        border-radius: 3px;
+                        border-color: #ff4949;
+                      "
+                    ></label>
+                    <label
+                      class="entry__specification"
+                      style="
+                        font-size: 12px;
+                        text-align: left;
+                        font-family: Helvetica, sans-serif;
+                        color: #8390a4;
+                      "
+                      >Example: Colombia</label
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div style="padding: 8px 0">
+                <div class="sib-input sib-form-block">
+                  <div class="form__entry entry_block">
+                    <div class="form__label-row">
+                      <label
+                        class="entry__label"
+                        style="
+                          font-weight: 700;
+                          text-align: left;
+                          font-size: 16px;
+                          font-family: Helvetica, sans-serif;
+                          color: #3c4858;
+                        "
+                        for="CITY"
+                        >Enter your City</label
+                      >
+                      <div class="entry__field">
+                        <input
+                          class="input"
+                          maxlength="200"
+                          type="text"
+                          id="CITY"
+                          name="CITY"
+                          autocomplete="off"
+                          placeholder="City"
+                        />
+                      </div>
+                    </div>
+                    <label
+                      class="entry__error entry__error--primary"
+                      style="
+                        font-size: 16px;
+                        text-align: left;
+                        font-family: Helvetica, sans-serif;
+                        color: #661d1d;
+                        background-color: #ffeded;
+                        border-radius: 3px;
+                        border-color: #ff4949;
+                      "
+                    ></label>
+                    <label
+                      class="entry__specification"
+                      style="
+                        font-size: 12px;
+                        text-align: left;
+                        font-family: Helvetica, sans-serif;
+                        color: #8390a4;
+                      "
+                      >Example: Bogotá</label
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div style="padding: 8px 0">
+                <div class="sib-optin sib-form-block" data-required="true">
+                  <div class="form__entry entry_mcq">
+                    <div class="form__label-row">
+                      <div class="entry__choice">
+                        <label>
+                          <input
+                            type="checkbox"
+                            class="input_replaced"
+                            value="1"
+                            id="OPT_IN"
+                            name="OPT_IN"
+                            required=""
+                          />
+                          <span class="checkbox checkbox_tick_positive"></span>
+                          <span
+                            style="
+                              font-size: 14px;
+                              text-align: left;
+                              font-family: Helvetica, sans-serif;
+                              color: #3c4858;
+                              background-color: transparent;
+                            "
+                          >
+                            <p>
+                              I agree to receive your newsletters and accept the
+                              data privacy statement. We respect your inbox.
+                            </p>
+                            <span
+                              data-required="*"
+                              style="display: inline"
+                              class="entry__label entry__label_optin"
+                            ></span>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                    <label
+                      class="entry__error entry__error--primary"
+                      style="
+                        font-size: 16px;
+                        text-align: left;
+                        font-family: Helvetica, sans-serif;
+                        color: #661d1d;
+                        background-color: #ffeded;
+                        border-radius: 3px;
+                        border-color: #ff4949;
+                      "
+                    ></label>
+                    <label
+                      class="entry__specification"
+                      style="
+                        font-size: 12px;
+                        text-align: left;
+                        font-family: Helvetica, sans-serif;
+                        color: #8390a4;
+                      "
+                      >You may unsubscribe at any time. No Spam. Ever.</label
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div style="padding: 8px 0">
+                <div
+                  class="g-recaptcha"
+                  data-sitekey="6LcXmXQjAAAAALQsrSfKOuDiQHAvcsb1HVcz5m8m"
+                  data-size="normal"
+                ></div>
+              </div>
+
+              <div style="padding: 8px 0">
+                <div class="sib-form-block" style="text-align: center">
+                  <button
+                    class="sib-form-block__button sib-form-block__button-with-loader"
+                    style="
+                      font-size: 21px;
+                      text-align: center;
+                      font-family: &quot;Trebuchet MS&quot;, sans-serif;
+                      color: #ffffff;
+                      background-color: #000000;
+                      border-radius: 3px;
+                      border-width: 0px;
+                    "
+                    form="sib-form"
+                    type="submit"
+                  >
+                    <svg
+                      class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon"
+                      viewBox="0 0 512 512"
+                    >
+                      <path
+                        d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"
+                      ></path>
+                    </svg>
+                    SUBSCRIBE
+                  </button>
+                </div>
+              </div>
+
+              <input
+                type="text"
+                name="email_address_check"
+                value=""
+                class="input--hidden"
+              />
+              <input type="hidden" name="locale" value="en" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+Brevo globals
+<script>
+  window.REQUIRED_CODE_ERROR_MESSAGE = "Please choose a country code";
+  window.LOCALE = "en";
+  window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE =
+    "The information provided is invalid. Please review the field format and try again.";
+  window.REQUIRED_ERROR_MESSAGE = "This field cannot be left blank. ";
+  window.GENERIC_INVALID_MESSAGE =
+    "The information provided is invalid. Please review the field format and try again.";
+  window.translation = {
+    common: {
+      selectedList: "{quantity} list selected",
+      selectedLists: "{quantity} lists selected",
+      selectedOption: "{quantity} selected",
+      selectedOptions: "{quantity} selected",
+    },
+  };
+  var AUTOHIDE = Boolean(1);
+</script>
+
+Brevo + reCAPTCHA scripts
+<script
+  defer=""
+  src="https://sibforms.com/forms/end-form/build/main.js"
+></script>
+<script src="https://www.google.com/recaptcha/api.js?hl=en"></script>
+-->
+
+<!-- Bandsintown widget loader (renders .bit-widget-initializer in #tour) -->
+<script
+  charset="utf-8"
+  src="https://widgetv3.bandsintown.com/main.min.js"
+></script>
+
+<!-- Code Brevo
+Newsletter modal behavior + auto close on success
+<script>
+  (function () {
+    var link = document.getElementById("newsletterLink");
+    var overlay = document.getElementById("nlOverlay");
+    var closeBtn = document.getElementById("nlClose");
+
+    function closeModal() {
+      overlay.classList.remove("is-open");
+      overlay.setAttribute("aria-hidden", "true");
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+    }
+
+    function openModal() {
+      overlay.classList.add("is-open");
+      overlay.setAttribute("aria-hidden", "false");
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+    }
+
+    function isVisible(el) {
+      if (!el) return false;
+      var cs = window.getComputedStyle(el);
+      if (
+        cs.display === "none" ||
+        cs.visibility === "hidden" ||
+        Number(cs.opacity) === 0
+      )
+        return false;
+      return (
+        el.offsetWidth > 0 ||
+        el.offsetHeight > 0 ||
+        el.getClientRects().length > 0
+      );
+    }
+
+    function attachAutoCloseObserver() {
+      var container = document.getElementById("sib-form-container");
+      if (!container) return;
+      var observer = new MutationObserver(function () {
+        var success = document.getElementById("success-message");
+        if (isVisible(success)) {
+          observer.disconnect();
+          setTimeout(closeModal, 900);
+        }
+      });
+      observer.observe(container, {
+        attributes: true,
+        childList: true,
+        subtree: true,
+      });
+    }
+
+    attachAutoCloseObserver();
+
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      openModal();
+    });
+
+    closeBtn.addEventListener("click", closeModal);
+
+    overlay.addEventListener("click", function (e) {
+      if (e.target === overlay) closeModal();
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && overlay.classList.contains("is-open"))
+        closeModal();
+    });
+  })();
+</script>
+-->
+
+<!-- Hero carousel -->
+<script>
+  (function () {
+    var root = document.getElementById("heroCarousel");
+    if (!root) return;
+    var track = root.querySelector(".hc-track");
+    var dots = root.querySelectorAll(".hc-dot");
+    var prev = root.querySelector(".hc-prev");
+    var next = root.querySelector(".hc-next");
+    var n = dots.length;
+    function go(i) {
+      track.scrollTo({ left: Math.max(0, Math.min(n - 1, i)) * track.clientWidth });
+    }
+    function cur() { return Math.round(track.scrollLeft / track.clientWidth); }
+    function sync() {
+      var i = cur();
+      dots.forEach(function (d, k) { d.setAttribute("aria-current", k === i); });
+      prev.disabled = i === 0;
+      next.disabled = i === n - 1;
+    }
+    prev.addEventListener("click", function () { go(cur() - 1); });
+    next.addEventListener("click", function () { go(cur() + 1); });
+    dots.forEach(function (d, k) { d.addEventListener("click", function () { go(k); }); });
+    track.addEventListener("scroll", sync, { passive: true });
+    track.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") { e.preventDefault(); go(cur() - 1); }
+      if (e.key === "ArrowRight") { e.preventDefault(); go(cur() + 1); }
+    });
+    window.addEventListener("resize", function () { track.style.scrollBehavior = "auto"; go(cur()); track.style.scrollBehavior = ""; });
+    sync();
+  })();
+</script>
+
+<!-- Hamburger menu + Manifest countdown -->
+<script>
+  (function () {
+    var page = document.getElementById("page");
+    var toggle = document.getElementById("navToggle");
+    var scrim = document.getElementById("navScrim");
+    var nav = document.getElementById("siteNav");
+
+    function closeNav() {
+      page.classList.remove("nav-open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+    function toggleNav() {
+      var open = page.classList.toggle("nav-open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+
+    toggle.addEventListener("click", toggleNav);
+    scrim.addEventListener("click", closeNav);
+    nav.addEventListener("click", function (e) {
+      if (e.target.tagName === "A") closeNav();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeNav();
+    });
+  })();
+
+  /* Play the Dark Session while it's on screen, pause when it isn't.
+     Talks to the player over the YT iframe API's postMessage protocol, so no
+     extra library. Commands sent before the iframe loads are dropped by the
+     player, hence the `ready` gate + replay on load. */
+  (function () {
+    var frame = document.getElementById("liminalVideo");
+    if (!frame || !("IntersectionObserver" in window)) return;
+    var ready = false;
+    var visible = false;
+
+    function send(func) {
+      if (!ready) return;
+      frame.contentWindow.postMessage(
+        JSON.stringify({ event: "command", func: func, args: [] }),
+        "https://www.youtube.com",
+      );
+    }
+
+    frame.addEventListener("load", function () {
+      ready = true;
+      if (visible) send("playVideo");
+    });
+
+    new IntersectionObserver(
+      function (entries) {
+        visible = entries[0].isIntersecting;
+        send(visible ? "playVideo" : "pauseVideo");
+      },
+      { threshold: 0.5 },
+    ).observe(frame);
+  })();
+
+  /* NEXT SHOW — clona el primer evento de la lista que pinta Bandsintown.
+     El widget sólo renderiza eventos futuros y los ordena ascendentemente por
+     el datetime local del venue, así que el índice 0 ES el próximo show para
+     cualquier visitante, sin importar su zona horaria. Leer el "Aug 21" visible
+     y compararlo contra Date.now() sería peor: ese texto no trae año ni offset,
+     así que en el salto de año elegiría el show equivocado.
+
+     La copia se renombra bit-* → nsx-* y se le duplica el CSS del widget bajo
+     ese prefijo. Conservar las clases bit-* dejaba la copia dentro del radar
+     del widget: en su segunda pasada la re-procesaba como si fuera suya, sin
+     los datos que espera (TypeError sobre "@context"), y la vaciaba. */
+  (function () {
+    var mount = document.getElementById("nextShowMount");
+    var source = document.getElementById("tourWrap");
+    var section = document.getElementById("nextShow");
+    if (!mount || !source || !section) return;
+
+    var PREFIX = "nsx-";
+
+    /* Ni un ampersand literal en este bloque, ni como operador lógico ni dentro
+       de una cadena. WordPress los escapa a su entidad HTML de forma
+       impredecible al guardar: rompió el AND de una condición (SyntaxError que
+       mata el script entero) y los separadores de query de las URLs de
+       compartir, mientras dejaba intactos otros 19 ANDs de la misma página.
+       De ahí los if anidados en vez de operadores lógicos, y AMP. */
+    var AMP = String.fromCharCode(38);
+
+    function unbrand(root) {
+      var nodes = [root].concat([].slice.call(root.querySelectorAll("*")));
+      nodes.forEach(function (n) {
+        // SVG expone className como SVGAnimatedString (no editable así); esos
+        // nodos no llevan clases bit-*, así que saltarlos es correcto.
+        if (typeof n.className !== "string") return;
+        if (n.className.indexOf("bit-") > -1)
+          n.className = n.className.split("bit-").join(PREFIX);
+      });
+    }
+
+    function copyRules(rules, out) {
+      for (var i = 0; i < rules.length; i++) {
+        var r = rules[i];
+        if (r.selectorText) {
+          if (r.selectorText.indexOf(".bit-") > -1)
+            out.push(
+              r.selectorText.split(".bit-").join("." + PREFIX) +
+                "{" +
+                r.style.cssText +
+                "}",
+            );
+        } else if (r.cssRules) {
+          if (r.conditionText) {
+            var inner = [];
+            copyRules(r.cssRules, inner);
+            if (inner.length)
+              out.push(
+                "@media " + r.conditionText + "{" + inner.join("") + "}",
+              );
+          }
+        }
+      }
+    }
+
+    function mirrorStyles() {
+      var out = [];
+      for (var i = 0; i < document.styleSheets.length; i++) {
+        // Las hojas cross-origin lanzan al leer cssRules; ninguna trae CSS del
+        // widget, así que ignorarlas no pierde nada.
+        try {
+          copyRules(document.styleSheets[i].cssRules, out);
+        } catch (e) {}
+      }
+      if (!out.length) return false;
+      var style = document.getElementById("nextShowStyles");
+      if (!style) {
+        style = document.createElement("style");
+        style.id = "nextShowStyles";
+        document.head.appendChild(style);
+      }
+      style.textContent = out.join("");
+      return true;
+    }
+
+    /* El panel de compartir del widget no sobrevive al clon por dos motivos
+       distintos: cloneNode no copia listeners (los clicks quedan muertos) y el
+       widget pinta esos cuatro iconos por JS al abrir el panel — setea
+       fill="#ffffff" en cada path, por eso en la copia sólo se veía la X, la
+       única que trae su color en el markup. Aquí se reponen ambas cosas.
+       El despliegue en sí es CSS y funciona solo. */
+    function wireShare(copy, url) {
+      var icons = copy.querySelectorAll('[class*="social-link-wrapper"]');
+      // Orden fijo del markup del widget: Facebook, X, email, copiar enlace.
+      // Los tres primeros los oculta el CSS; sólo el último se cablea. Con otro
+      // número de iconos ese orden ya no es fiable, así que mejor no tocar nada
+      // que cablear el icono equivocado.
+      if (icons.length !== 4) return;
+      var link = icons[3];
+
+      // El widget pinta estos paths por JS al abrir el panel; la copia nunca
+      // recibe esa pasada y el icono saldría invisible.
+      [].slice.call(link.querySelectorAll("path")).forEach(function (p) {
+        if (p.getAttribute("fill") === "none")
+          p.setAttribute("fill", "#ffffff");
+      });
+
+      link.addEventListener("click", function (e) {
+        // El panel vive dentro del <a> del evento: sin esto, el click navega a
+        // la página del concierto en vez de copiar.
+        e.preventDefault();
+        e.stopPropagation();
+        // clipboard exige contexto seguro; en http:// no existe.
+        if (navigator.clipboard) navigator.clipboard.writeText(url);
+        else window.prompt("Copia el enlace:", url);
+        link.style.opacity = "0.45";
+        setTimeout(function () {
+          link.style.opacity = "";
+        }, 900);
+      });
+    }
+
+    function render() {
+      // El widget varía su markup entre renders: a veces envuelve los eventos
+      // en .bit-upcoming-events y a veces no. Anclarse al propio a.bit-event,
+      // que siempre existe, evita quedarse esperando un contenedor opcional.
+      var next = source.querySelector("a.bit-event");
+      if (!next) return false;
+
+      /* Si el CSS del widget llegara en una hoja cross-origin no podríamos
+         copiarlo; entonces se conservan las clases bit-* originales, que sí
+         están estiladas. Es peor que aislar (el widget puede re-procesar la
+         copia), pero infinitamente mejor que dejar el bloque vacío. */
+      var isolated = mirrorStyles();
+
+      // Reconstruye la cadena de contenedores (#tourWrap → … → evento): el CSS
+      // del widget cuelga de ellos y un <a> suelto pierde el layout entero.
+      var chain = [];
+      for (var el = next.parentElement; el; el = el.parentElement) {
+        if (el === source) break;
+        chain.unshift(el);
+      }
+
+      mount.textContent = "";
+      var host = mount;
+      chain.forEach(function (node) {
+        var div = document.createElement("div");
+        div.className = node.className;
+        if (isolated) unbrand(div);
+        host.appendChild(div);
+        host = div;
+      });
+      var copy = next.cloneNode(true);
+      if (isolated) unbrand(copy);
+
+      wireShare(copy, next.href);
+
+      host.appendChild(copy);
+
+      // La sección nace oculta: sin este flag, una gira terminada (widget sin
+      // eventos) dejaría un título "Next Show" flotando sobre un hueco.
+      section.classList.add("is-ready");
+      return true;
+    }
+
+    if (!render()) {
+      var observer = new MutationObserver(function () {
+        if (render()) observer.disconnect();
+      });
+      /* Observa el documento entero, no sólo #tourWrap: el widget decide dónde
+         monta y cuándo, y perder ese mutation deja el bloque vacío para siempre. */
+      observer.observe(document.body, { childList: true, subtree: true });
+    }
+  })();
+
+  (function () {
+    var inline = document.getElementById("mfCountInline");
+    if (!inline) return;
+    var target = new Date("2026-10-07T00:00:00").getTime();
+
+    function pad(n) {
+      return String(n).padStart(2, "0");
+    }
+    function tick() {
+      var diff = Math.max(0, target - Date.now());
+      var d = Math.floor(diff / 86400000);
+      var h = Math.floor((diff % 86400000) / 3600000);
+      var m = Math.floor((diff % 3600000) / 60000);
+      var s = Math.floor((diff % 60000) / 1000);
+      inline.textContent = d + "D " + pad(h) + ":" + pad(m) + ":" + pad(s);
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+</script>

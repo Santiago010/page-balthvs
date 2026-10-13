@@ -1,0 +1,445 @@
+<link
+  href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&amp;family=Nunito+Sans:ital,wght@1,400&amp;display=swap"
+  rel="stylesheet"
+/>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: "Nunito Sans", sans-serif;
+    background: #fff;
+    color: #000;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pantacle {
+    width: 96%;
+    max-width: 1600px;
+    height: 28vh;
+    background: url("https://balthvs.com/wp-content/uploads/2025/12/Pantacle-Black-Hole-scaled.png")
+      center/contain no-repeat;
+  }
+
+  .section-title {
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+    font-size: 36px;
+    letter-spacing: 0.25em;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .contact-text {
+    width: 50vw;
+    max-width: 1120px;
+    padding: 0 3vw;
+    text-align: center;
+    font-size: 20px;
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+  }
+
+  .contact-text p {
+    margin: 0 0 1.4em 0;
+  }
+
+  .section-label {
+    font-style: italic;
+    font-weight: 700;
+    font-size: 115%;
+  }
+
+  .booking-label {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .territory {
+    font-weight: 700;
+    margin-bottom: 0.2em;
+  }
+
+  .cc-note {
+    font-style: italic;
+  }
+
+  .footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 6vh;
+  }
+
+  .footer-divider {
+    width: 42.43%;
+    height: 10.4vh;
+    margin-top: 7vh;
+    background: url("https://balthvs.com/wp-content/uploads/2025/12/HEADERSArtboard-1-scaled.png")
+      center/contain no-repeat;
+    transform: rotate(180deg);
+  }
+
+  .copyright {
+    margin-top: 2vh;
+    font-style: italic;
+    font-size: 16px;
+    letter-spacing: 0.06em;
+    text-align: center;
+  }
+
+  .social-row {
+    display: flex;
+    gap: 36px;
+    margin-top: 2vh;
+    justify-content: center;
+  }
+
+  .social-row img {
+    height: 44px;
+    width: auto;
+    display: block;
+  }
+
+  @media (max-width: 480px) {
+    .pantacle {
+      width: 80%;
+      height: 18vh;
+    }
+
+    .section-title {
+      font-size: 28px;
+    }
+
+    .contact-text {
+      width: 80vw;
+      font-size: 15.3px;
+    }
+
+    .social-row img {
+      height: 22px;
+    }
+
+    .copyright {
+      font-size: 11.2px;
+    }
+  }
+</style>
+
+<!-- ===== Embedded BALTHVS navigation header ===== -->
+<style>
+  /* WordPress host reset — remove the Twenty Twenty-Three gap above the header */
+  .wp-site-blocks {
+    padding-top: 0 !important;
+  }
+  main,
+  .entry-content {
+    margin-top: 0 !important;
+  }
+  .page {
+    margin-top: 0 !important;
+  }
+  .site-header {
+    margin-top: 0 !important;
+  }
+
+  .site-header {
+    box-sizing: border-box;
+    /* Full-bleed: break out of the WordPress constrained content column */
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 52px;
+    background: #0a0a0a;
+    position: sticky;
+    top: 0;
+    z-index: 60;
+  }
+  .site-header * {
+    box-sizing: border-box;
+  }
+  .site-logo {
+    height: 29px;
+    width: auto;
+    display: block;
+  }
+  .site-nav {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+  }
+  .site-nav a {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 12.5px;
+    letter-spacing: 1.8px;
+    white-space: nowrap;
+    transition:
+      color 0.2s ease,
+      border-color 0.2s ease;
+  }
+  .site-nav a:hover {
+    color: #e5dfdf;
+  }
+  .site-nav a.is-active {
+    color: #ffffff;
+    border-bottom: 2px solid #bc3a1e;
+    padding-bottom: 3px;
+  }
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    z-index: 70;
+  }
+  .nav-toggle span {
+    display: block;
+    height: 1.5px;
+    width: 24px;
+    background: #ffffff;
+    transition:
+      transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.2s ease;
+  }
+  .nav-open .nav-toggle span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+  .nav-open .nav-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-open .nav-toggle span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  @media (max-width: 768px) {
+    .site-header {
+      padding: 18px 22px;
+    }
+    .nav-toggle {
+      display: flex;
+    }
+    .site-nav {
+      box-sizing: border-box;
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: min(320px, 84vw);
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 26px;
+      padding: 40px 44px;
+      background: #0a0a0a;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: -24px 0 60px rgba(20, 12, 6, 0.16);
+      transform: translateX(100%);
+      transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+      z-index: 65;
+    }
+    .nav-open .site-nav {
+      transform: translateX(0);
+    }
+    .site-nav a {
+      font-size: 16px;
+      letter-spacing: 2.4px;
+    }
+    .nav-scrim {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 8, 6, 0.45);
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+      z-index: 55;
+    }
+    .nav-open .nav-scrim {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+</style>
+
+<header class="site-header">
+  <a href="https://balthvs.com/" aria-label="BALTHVS home">
+    <img
+      class="site-logo"
+      src="https://balthvs.com/wp-content/uploads/2026/06/BALTHVS_LOGO_WHITE.png"
+      alt="BALTHVS"
+    />
+  </a>
+
+  <button
+    class="nav-toggle"
+    id="navToggle"
+    type="button"
+    aria-label="Menu"
+    aria-expanded="false"
+    aria-controls="siteNav"
+  >
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="site-nav" id="siteNav" aria-label="Primary">
+    <a
+      rel="noopener noreferrer"
+      target="_blank"
+      href="https://balthvs.com/albums/"
+      >MUSIC</a
+    >
+    <a
+      href="https://balthvs.com/tour/"
+      target="_blank"
+      rel="noopener noreferrer"
+      >TOUR</a
+    >
+    <a
+      href="https://www.youtube.com/@balthvs"
+      target="_blank"
+      rel="noopener noreferrer"
+      >VIDEOS</a
+    >
+    <a
+      href="https://paidtabs.com/BALTHVS"
+      target="_blank"
+      rel="noopener noreferrer"
+      >TABS</a
+    >
+    <a
+      href="https://laylo.com/balthvs"
+      target="_blank"
+      rel="noopener noreferrer"
+      >SUBSCRIBE</a
+    >
+    <a href="https://balthvs.com/about/">ABOUT</a>
+    <a class="is-active" href="https://balthvs.com/contact/">CONTACTS</a>
+  </nav>
+</header>
+<div class="nav-scrim" id="navScrim" aria-hidden="true"></div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var toggle = document.getElementById("navToggle");
+    var scrim = document.getElementById("navScrim");
+    var nav = document.getElementById("siteNav");
+    if (!toggle || !nav) return;
+    function closeNav() {
+      root.classList.remove("nav-open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+    function toggleNav() {
+      var open = root.classList.toggle("nav-open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+    toggle.addEventListener("click", toggleNav);
+    scrim.addEventListener("click", closeNav);
+    nav.addEventListener("click", function (e) {
+      if (e.target.tagName === "A") closeNav();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeNav();
+    });
+  })();
+</script>
+
+<div class="page">
+  <div class="section-title">• CONTACT •</div>
+
+  <div class="contact-text">
+    <p class="section-label">For Enquiries</p>
+    <p>contact@balthvs.com</p>
+
+    <p class="section-label booking-label">For Booking</p>
+
+    <p class="territory">USA &amp; Canada</p>
+    <p>guy.oldaker@unitedtalent.com</p>
+
+    <p class="territory">EU &amp; UK</p>
+    <p>kevin.jergenson@unitedtalent.com</p>
+
+    <p class="territory">Asia, Latin America &amp; Oceania</p>
+    <p>carlos.abreu@unitedtalent.com</p>
+
+    <p class="cc-note">(Please CC balthvsmusic@gmail.com)</p>
+  </div>
+
+  <div class="footer">
+    <div class="footer-divider" aria-hidden="true"></div>
+
+    <div class="copyright">© 2026 BALTHVS. All rights reserved.</div>
+
+    <div class="social-row" aria-label="Social links">
+      <a
+        href="https://open.spotify.com/artist/2CtiNJi0zB35RHYXViVjKG"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Spotify"
+      >
+        <img
+          src="https://balthvs.com/wp-content/uploads/2025/12/Spotify-Icon-Black-Logo.wine_.png"
+          alt="Spotify"
+        />
+      </a>
+      <a
+        href="https://music.apple.com/us/artist/balthvs/1502104696"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Apple Music"
+      >
+        <img
+          src="https://balthvs.com/wp-content/uploads/2025/12/Apple-Music.png"
+          alt="Apple Music"
+        />
+      </a>
+      <a
+        href="https://www.instagram.com/balthvsmusic"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+      >
+        <img
+          src="https://balthvs.com/wp-content/uploads/2025/12/Instagram.png"
+          alt="Instagram"
+        />
+      </a>
+      <a
+        href="https://balthvsmusic.bandcamp.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Bandcamp"
+      >
+        <img
+          src="https://balthvs.com/wp-content/uploads/2025/12/Bandcamp.png"
+          alt="Bandcamp"
+        />
+      </a>
+    </div>
+  </div>
+</div>
