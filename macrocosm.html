@@ -32,6 +32,7 @@
   }
 
   .section-title {
+    margin: 0;
     font-size: 36px;
     letter-spacing: 0.25em;
     font-weight: 600;
@@ -139,8 +140,10 @@
 
   .related-albums-inner {
     display: flex;
+    flex-wrap: wrap;
     gap: 5vw;
     justify-content: center;
+    max-width: 100%;
   }
 
   .related-albums-inner a {
@@ -152,6 +155,32 @@
     max-width: 18vw;
     height: auto;
     display: block;
+  }
+
+  .related-albums-inner a {
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+  }
+
+  .ra-cap {
+    display: block;
+    margin-top: 8px;
+    line-height: 1.25;
+  }
+
+  .ra-cap .ra-name {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+  }
+
+  .ra-cap .ra-date {
+    display: block;
+    font-size: 12px;
+    color: #555;
+    margin-top: 1px;
   }
 
   .footer {
@@ -271,7 +300,9 @@
     /* fit 4 related albums across without cropping */
     .related-albums-inner {
       width: 100%;
+      flex-wrap: wrap;
       gap: 3vw;
+      row-gap: 5vw;
       justify-content: space-between;
       padding: 0 4vw;
       box-sizing: border-box;
@@ -533,9 +564,65 @@
   })();
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://balthvs.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Albums", "item": "https://balthvs.com/albums/" },
+    { "@type": "ListItem", "position": 3, "name": "Macrocosm", "item": "https://balthvs.com/albums/macrocosm/" }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicAlbum",
+  "name": "Macrocosm",
+  "url": "https://balthvs.com/albums/macrocosm/",
+  "image": "https://balthvs.com/wp-content/uploads/2025/12/macrocosm.jpg",
+  "datePublished": "2020",
+  "genre": "Psychedelic funk",
+  "recordLabel": { "@type": "Organization", "name": "Cubensis Records" },
+  "producer": { "@type": "Person", "name": "Balthazar Aguirre" },
+  "byArtist": {
+    "@type": "MusicGroup",
+    "name": "BALTHVS",
+    "url": "https://balthvs.com/",
+    "sameAs": [
+      "https://open.spotify.com/artist/2CtiNJi0zB35RHYXViVjKG",
+      "https://music.apple.com/us/artist/balthvs/1502104696",
+      "https://balthvsmusic.bandcamp.com/"
+    ]
+  },
+  "numTracks": 10,
+  "track": [
+    { "@type": "MusicRecording", "name": "Le Cœurs En Peine (Almas Que Se Van)", "position": 1 },
+    { "@type": "MusicRecording", "name": "Johanna's Dream", "position": 2 },
+    { "@type": "MusicRecording", "name": "Siente", "position": 3 },
+    { "@type": "MusicRecording", "name": "Hooked (Hazy Nights)", "position": 4 },
+    { "@type": "MusicRecording", "name": "Colombian Girl", "position": 5 },
+    { "@type": "MusicRecording", "name": "Breathin'", "position": 6 },
+    { "@type": "MusicRecording", "name": "I Just Want To Go Out", "position": 7 },
+    { "@type": "MusicRecording", "name": "Free Yourself", "position": 8 },
+    { "@type": "MusicRecording", "name": "Heat Keeps on Risin'", "position": 9 },
+    { "@type": "MusicRecording", "name": "The Midnight Song", "position": 10 }
+  ],
+  "sameAs": [
+    "https://open.spotify.com/album/2UxFwWypDKDPXlt9dKnLod"
+  ],
+  "offers": [
+    { "@type": "Offer", "url": "https://balthvs.bandcamp.com/album/macrocosm", "availability": "https://schema.org/InStock", "category": "CD" },
+    { "@type": "Offer", "url": "https://shop.mixtorecords.com/", "category": "Vinyl" }
+  ]
+}
+</script>
+
 <div class="page">
   <div class="header">
-    <div class="section-title">MACROCOSM</div>
+    <h1 class="section-title">MACROCOSM</h1>
   </div>
 
   <div class="bg-divider top" aria-hidden="true"></div>
@@ -544,7 +631,7 @@
     <img
       class="album-image"
       src="https://balthvs.com/wp-content/uploads/2025/12/macrocosm.jpg"
-      alt="Macrocosm album cover"
+      alt="Macrocosm, BALTHVS album cover (2020)"
     />
 
     <div class="album-text">
@@ -616,46 +703,57 @@
 
   <div class="related-albums" aria-label="Other albums">
     <div class="related-albums-inner">
-      <a href="https://balthvs.com/albums/manifest/" aria-label="Open Manifest">
+      <a href="https://balthvs.com/albums/manifest/">
         <img
           src="https://balthvs.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-10-06-at-20.33.37.jpeg"
-          alt="Manifest album cover"
+          alt="Manifest, BALTHVS album cover (2026)"
         />
+        <span class="ra-cap"
+          ><span class="ra-name">Manifest</span
+          ><span class="ra-date">2026</span></span
+        >
       </a>
-      <a
-        href="https://balthvs.com/albums/transmutations/"
-        aria-label="Transmutations"
-      >
+      <a href="https://balthvs.com/albums/transmutations/">
         <img
           src="https://balthvs.com/wp-content/uploads/2026/02/Transmutations-Cover-1000x1000-FINAL.jpg"
-          alt="Transmutations album cover"
+          alt="Transmutations, BALTHVS album cover (2026)"
         />
+        <span class="ra-cap"
+          ><span class="ra-name">Transmutations</span
+          ><span class="ra-date">2026</span></span
+        >
       </a>
-      <a href="https://balthvs.com/albums/harvest/" aria-label="Harvest">
+      <a href="https://balthvs.com/albums/harvest/">
         <img
           src="https://balthvs.com/wp-content/uploads/2025/12/Harvest.jpg"
-          alt="Harvest album cover"
+          alt="Harvest, BALTHVS album cover (2024)"
         />
+        <span class="ra-cap"
+          ><span class="ra-name">Harvest</span
+          ><span class="ra-date">2024</span></span
+        >
       </a>
 
-      <a
-        href="https://balthvs.com/albums/thirdvibration/"
-        aria-label="Third Vibration"
-      >
+      <a href="https://balthvs.com/albums/thirdvibration/">
         <img
           src="https://balthvs.com/wp-content/uploads/2025/12/third-vibration.jpg"
-          alt="Third Vibration album cover"
+          alt="Third Vibration, BALTHVS album cover (2023)"
         />
+        <span class="ra-cap"
+          ><span class="ra-name">Third Vibration</span
+          ><span class="ra-date">2023</span></span
+        >
       </a>
 
-      <a
-        href="https://balthvs.com/albums/causeeffect/"
-        aria-label="Cause and Effect"
-      >
+      <a href="https://balthvs.com/albums/causeeffect/">
         <img
           src="https://balthvs.com/wp-content/uploads/2025/12/cause-n-effect.jpg"
-          alt="Cause and Effect album cover"
+          alt="Cause &amp; Effect, BALTHVS album cover (2022)"
         />
+        <span class="ra-cap"
+          ><span class="ra-name">Cause &amp; Effect</span
+          ><span class="ra-date">2022</span></span
+        >
       </a>
     </div>
   </div>

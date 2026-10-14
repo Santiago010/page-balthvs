@@ -32,6 +32,7 @@
   }
 
   .section-title {
+    margin: 0;
     font-size: 36px;
     letter-spacing: 0.25em;
     font-weight: 600;
@@ -139,8 +140,10 @@
 
   .related-albums-inner {
     display: flex;
+    flex-wrap: wrap;
     gap: 5vw;
     justify-content: center;
+    max-width: 100%;
   }
 
   .related-albums-inner img {
@@ -148,6 +151,32 @@
     max-width: 18vw;
     height: auto;
     display: block;
+  }
+
+  .related-albums-inner a {
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+  }
+
+  .ra-cap {
+    display: block;
+    margin-top: 8px;
+    line-height: 1.25;
+  }
+
+  .ra-cap .ra-name {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+  }
+
+  .ra-cap .ra-date {
+    display: block;
+    font-size: 12px;
+    color: #555;
+    margin-top: 1px;
   }
 
   .footer {
@@ -253,7 +282,9 @@
 
     .related-albums-inner {
       width: 100%;
+      flex-wrap: wrap;
       gap: 3vw;
+      row-gap: 5vw;
       justify-content: space-between;
       padding: 0 4vw;
       box-sizing: border-box;
@@ -513,9 +544,66 @@
   })();
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://balthvs.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Albums", "item": "https://balthvs.com/albums/" },
+    { "@type": "ListItem", "position": 3, "name": "Third Vibration", "item": "https://balthvs.com/albums/thirdvibration/" }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicAlbum",
+  "name": "Third Vibration",
+  "url": "https://balthvs.com/albums/thirdvibration/",
+  "image": "https://balthvs.com/wp-content/uploads/2025/12/third-vibration.jpg",
+  "datePublished": "2023",
+  "genre": "Psychedelic funk",
+  "recordLabel": { "@type": "Organization", "name": "Cubensis Records" },
+  "producer": { "@type": "Person", "name": "Balthazar Aguirre" },
+  "byArtist": {
+    "@type": "MusicGroup",
+    "name": "BALTHVS",
+    "url": "https://balthvs.com/",
+    "sameAs": [
+      "https://open.spotify.com/artist/2CtiNJi0zB35RHYXViVjKG",
+      "https://music.apple.com/us/artist/balthvs/1502104696",
+      "https://balthvsmusic.bandcamp.com/"
+    ]
+  },
+  "numTracks": 11,
+  "track": [
+    { "@type": "MusicRecording", "name": "All Is One", "position": 1 },
+    { "@type": "MusicRecording", "name": "Komorebi", "position": 2 },
+    { "@type": "MusicRecording", "name": "Ashes", "position": 3 },
+    { "@type": "MusicRecording", "name": "In Plundered Dreams", "position": 4 },
+    { "@type": "MusicRecording", "name": "Famagusta Port", "position": 5 },
+    { "@type": "MusicRecording", "name": "Ojos Verdes", "position": 6 },
+    { "@type": "MusicRecording", "name": "Feelin' Blue", "position": 7 },
+    { "@type": "MusicRecording", "name": "Sun in Gemini", "position": 8 },
+    { "@type": "MusicRecording", "name": "Pajaro de Cumbia", "position": 9 },
+    { "@type": "MusicRecording", "name": "Cosmic Boogie", "position": 10 },
+    { "@type": "MusicRecording", "name": "Pajaro de Cumbia (Nakuma Version)", "position": 11 }
+  ],
+  "sameAs": [
+    "https://open.spotify.com/album/2tk4OOnz9uDT9BLJY4EBLY"
+  ],
+  "offers": [
+    { "@type": "Offer", "url": "https://balthvs.bandcamp.com/album/third-vibration", "availability": "https://schema.org/InStock", "category": "CD" },
+    { "@type": "Offer", "url": "https://shop.mixtorecords.com/", "category": "Vinyl" }
+  ]
+}
+</script>
+
 <div class="page">
   <div class="header">
-    <div class="section-title">THIRD VIBRATION</div>
+    <h1 class="section-title">THIRD VIBRATION</h1>
   </div>
 
   <div class="bg-divider top" aria-hidden="true"></div>
@@ -524,7 +612,7 @@
     <img
       class="album-image"
       src="https://balthvs.com/wp-content/uploads/2025/12/third-vibration.jpg"
-      alt="Third Vibration album cover"
+      alt="Third Vibration, BALTHVS album cover (2023)"
     />
 
     <div class="album-text">
@@ -598,43 +686,57 @@
 
   <div class="related-albums" aria-label="Other albums">
     <div class="related-albums-inner">
-      <a
-        href="https://balthvs.com/albums/causeeffect/"
-        aria-label="Cause and Effect"
-      >
+      <a href="https://balthvs.com/albums/causeeffect/">
         <img
           src="https://balthvs.com/wp-content/uploads/2025/12/cause-n-effect.jpg"
-          alt="Cause and Effect album cover"
+          alt="Cause &amp; Effect, BALTHVS album cover (2022)"
         />
+        <span class="ra-cap"
+          ><span class="ra-name">Cause &amp; Effect</span
+          ><span class="ra-date">2022</span></span
+        >
       </a>
-      <a href="https://balthvs.com/albums/macrocosm/" aria-label="Macrocosm">
+      <a href="https://balthvs.com/albums/macrocosm/">
         <img
           src="https://balthvs.com/wp-content/uploads/2025/12/macrocosm.jpg"
-          alt="Macrocosm album cover"
+          alt="Macrocosm, BALTHVS album cover (2020)"
         />
+        <span class="ra-cap"
+          ><span class="ra-name">Macrocosm</span
+          ><span class="ra-date">2020</span></span
+        >
       </a>
 
-      <a href="https://balthvs.com/albums/manifest/" aria-label="Open Manifest">
+      <a href="https://balthvs.com/albums/manifest/">
         <img
           src="https://balthvs.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-10-06-at-20.33.37.jpeg"
-          alt="Manifest album cover"
+          alt="Manifest, BALTHVS album cover (2026)"
         />
+        <span class="ra-cap"
+          ><span class="ra-name">Manifest</span
+          ><span class="ra-date">2026</span></span
+        >
       </a>
 
-      <a
-        href="https://balthvs.com/albums/transmutations/"
-        aria-label="Transmutations"
-      >
+      <a href="https://balthvs.com/albums/transmutations/">
         <img
           src="https://balthvs.com/wp-content/uploads/2026/02/Transmutations-Cover-1000x1000-FINAL.jpg"
-          alt="Transmutations album cover"
+          alt="Transmutations, BALTHVS album cover (2026)"
         />
+        <span class="ra-cap"
+          ><span class="ra-name">Transmutations</span
+          ><span class="ra-date">2026</span></span
+        >
       </a>
-      <a href="https://balthvs.com/albums/harvest/" aria-label="Harvest">
+      <a href="https://balthvs.com/albums/harvest/">
         <img
           src="https://balthvs.com/wp-content/uploads/2025/12/Harvest.jpg"
-          alt="Harvest album cover"
+          alt="Harvest, BALTHVS album cover (2024)"
         />
+        <span class="ra-cap"
+          ><span class="ra-name">Harvest</span
+          ><span class="ra-date">2024</span></span
+        >
       </a>
     </div>
   </div>

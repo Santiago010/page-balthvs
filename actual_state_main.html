@@ -115,31 +115,7 @@
     box-sizing: border-box;
   }
 
-  /* //TODO:importart — WORDPRESS HOST OVERRIDES (borrar todo este bloque)
-     ------------------------------------------------------------------
-     Necesarios SOLO mientras este fragmento viva dentro de un bloque
-     custom-HTML del tema Twenty Twenty-Three. Medido en vivo sobre
-     https://balthvs.com/test/ a 2000px de ancho. Cuando la página deje de
-     estar dentro del layout "constrained" del tema, borra hasta el cierre
-     marcado FIN //TODO:importart y no queda ningún !important.
 
-     Lo que hace el tema y por qué duele:
-
-     1. theme.json define --wp--style--global--content-size: 650px, y la regla
-        .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull))
-        se lo aplica como max-width + margin auto a CADA hijo directo de
-        .entry-content. Nuestro #page quedaba en 650px con 643px de margen
-        muerto a cada lado. #nlOverlay (position:fixed, inset:0) también se
-        recortaba a 650px, así que el modal salía angosto.
-
-     2. .entry-content.has-global-padding mete 32px de padding lateral.
-
-     3. <main> arrastra margin-top: 72px y .entry-content otros 24px
-        (--wp--style--block-gap: 1.5rem). Esos 96px son la franja blanca que
-        se ve encima del header negro.
-
-     4. El block-gap también le pone margin-block-start: 24px a cada hermano
-        dentro del bloque. */
 
   .entry-content > *,
   #page,
@@ -1079,6 +1055,31 @@
     }
   }
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicGroup",
+  "@id": "https://balthvs.com/#band",
+  "name": "BALTHVS",
+  "genre": "Psychedelic funk",
+  "foundingDate": "2019",
+  "foundingLocation": { "@type": "Place", "name": "Bogotá, Colombia" },
+  "url": "https://balthvs.com/",
+  "member": [
+    { "@type": "Person", "name": "Balthazar Aguirre" },
+    { "@type": "Person", "name": "Johanna Mercuriana" },
+    { "@type": "Person", "name": "Santiago Lizcano" }
+  ],
+  "sameAs": [
+    "https://open.spotify.com/artist/2CtiNJi0zB35RHYXViVjKG",
+    "https://music.apple.com/us/artist/balthvs/1502104696",
+    "https://www.instagram.com/balthvsmusic",
+    "https://balthvsmusic.bandcamp.com/",
+    "https://www.youtube.com/@balthvs"
+  ]
+}
+</script>
 
 <div class="page" id="page">
   <!-- HEADER -->
